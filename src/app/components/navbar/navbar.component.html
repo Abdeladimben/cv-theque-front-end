@@ -1,0 +1,11 @@
+<div class="navbar">
+    <img class="menu" *ngIf="menu" src="/assets/hamburger.svg" alt="menu" (click)="openMenu()">
+    <nav *ngIf="navbar">
+        <div class="closebtn" (click)="closeMenu()">&times;</div>
+        <ul>
+            <li class="first" (click)="changerComponent('publier')">PUBLIER UNE OFFRE</li>
+            <li (click)="changerComponent('offres')">OFFRES</li>
+            <li (click)="changerComponent('cvs')">UTILISATEURS</li>
+        </ul>
+    </nav>
+</div>

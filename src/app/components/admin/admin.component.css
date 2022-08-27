@@ -1,0 +1,375 @@
+/* .container{
+    width: 100%;
+    display: grid;
+    height: calc(100% - 80px);
+} */
+.navbar{
+    
+    width: 20%;
+    background-color:#0f1a34;
+    margin-top:1px;
+}
+nav{
+    
+    height: calc(100vh - 81px);
+    padding-top:20px;
+    
+    background-color:#0f1a34;
+    
+}
+ul{
+    position:sticky;
+    top:80px;
+}
+li{
+    padding:20px 30px;
+    list-style :none;
+    position: relative;
+    color:#fff;
+    border-bottom:1px solid #fff;
+    cursor: pointer;
+}
+li:hover{
+    padding-left:0;
+    margin-left:30px;
+    background-color:#fff;
+    position: relative;
+    border:none;
+    color:#0f1a34;
+}
+li:hover::before{
+    content:'';
+    width:30px;
+    height:60px;
+    border-radius:60px 0 0 60px;
+    background-color:#fff;
+    position: absolute;
+    bottom:0px;
+    left:-30px;
+}
+
+
+.tablecontainer{
+    padding-top:20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.search{
+    width: 90%;
+}
+
+.mat-radio-group{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 40px;
+}
+
+.search div{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    grid-gap: 15px;
+}
+
+.search input{
+    width:100%;
+    height:30px;
+    padding-left: 10px;
+    border:none;
+    border-bottom: none;
+    border-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-sizing: border-box;
+    background-color:#92c9d45e;
+    margin-top: 5px;
+}
+.table{
+    width: 90%;
+    overflow-x:auto;
+}
+table{
+    width: 100%;
+    border: 1px solid #e1dfdf42;
+    box-shadow:#00000059 0px 5px 15px;
+    border-collapse: collapse;
+    overflow-x:auto;
+}
+
+thead tr{
+    background-color:#3e6edd;
+    height:50px;
+    
+}
+
+tbody tr:nth-child(even) {
+    background: #CCC;
+}
+
+td{
+    text-align: center;
+    height:50px;
+}
+th.controle_border{
+    border-left: 1px solid #fff;
+}
+.controle_border{
+    border-left: 1px solid #0011ff;
+}
+
+.delete .mat-button:hover{
+    background-color: #ec0f0fcf;
+}
+
+.afficher .mat-button:hover{
+    background-color: #0fec21cf;
+}
+
+
+.container{
+    margin-top:20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navigate{
+    width:fit-content;
+    padding:10px 30px;
+    background-color:#ed3d2b;
+    color:#fff;
+    float:right;
+    position:sticky;
+    top:80px;
+    cursor:pointer;
+}
+
+.container .form-container{
+    display: flex;
+    flex-direction: column;
+    width:90%;
+    background-color: #f1f1f1;
+
+}
+
+
+.twoColumns{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin:20px 0;
+}
+
+
+.title{
+    background-color:#7777fa;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title h1{
+    margin-left: 20px;
+    margin-bottom:0;
+}
+mat-icon{
+    color: #7777fa;
+}
+.add{
+    background-color:#fff;
+    border:none;
+    height:25px;
+    width:25px;
+    border-radius:50%;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+
+.addinput >div,.flex-child{
+    display:flex;
+    gap:50px;
+}
+.addinput,.flex{
+    margin-left: 40px;
+}
+.flex{
+    display:flex;
+    flex-direction: column;
+    background-color: #fff;
+    margin:0 40px 20px;
+    padding:20px;
+    border-radius:15px;
+
+}
+
+h2{
+    margin:16px 0 16px 60px;
+}
+.buttonAjouter{
+    width:70px;
+    height:25px;
+    cursor:pointer;
+    border:none;
+    border-radius:10px;
+    background-color: #00ff007d;
+}
+.buttonAjouter:hover:enabled{
+    background-color: #00ff00;
+}
+
+.labels{
+    display:grid;
+}
+.inputs{
+    display:grid;
+}
+.labels,.inputs{
+    gap:3px;
+}
+.margin{
+    margin:20px 0;
+}
+
+
+
+.publier{
+    width: 100%;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+app-publier{
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.offres{
+    width: 100%;
+}
+
+
+@media (max-width: 1200px) {  
+    .twoColumns{
+        grid-template-columns: auto;
+    }
+
+}
+/* Landscape phone to portrait tablet */
+@media (max-width: 936px) {
+    .MainTitle{
+        justify-content: start;
+        padding: 0 calc(50% - 150px);
+    }
+
+}
+
+@media (max-width: 768px) {
+    .parent{
+        display:grid;
+    }
+    .navigate{
+        background-color: #ed3d2ba1;
+        color: #000;
+        position:sticky;
+        top:61px;
+        padding-left:20px;
+        margin-left:20px;
+    }
+    .navigate::after{
+        content:'';
+        position: absolute;
+        left:-20px;
+        top:0;
+        width: 0;
+        height: 0;
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent; 
+        border-right:20px solid #ed3d2ba1;
+        clear: both;
+    }
+    .navigate:hover{
+        background-color: #ed3d2b;
+    }
+    table {
+        border: 0;
+      }
+    
+      table caption {
+        font-size: 1.3em;
+      }
+      
+      table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+      }
+      
+      table tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: 20px;
+        padding:10px;
+        box-sizing:border-box;
+      }
+      
+      table td {
+        border-bottom: 1px solid #ddd;
+        font-size: 1em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      table td::before {
+        /*
+        * aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      
+      table td:last-child {
+        border-bottom: 0;
+      }
+      .controle_border{
+        border-left: 1px solid red;
+    }
+  
+}
+
+@media (max-width: 480px) {
+    .flex{
+        margin:0 0 20px 0px;
+        padding-right:0;
+    }
+    .addinput{
+        margin-left: 20px;
+    }
+    .addinput >div,.flex-child{
+        display:flex;
+        gap:10px;
+    }
+    .labels,.inputs{
+        gap:10px;
+    }
+    .mat-radio-group{
+        grid-template-columns: auto;
+        grid-gap: 20px;
+        font-size: 12px;
+    }
+}
+
+
+

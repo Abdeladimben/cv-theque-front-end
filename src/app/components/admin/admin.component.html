@@ -1,0 +1,236 @@
+<!-- <div class="container"> -->
+    <!-- <div class="navbar">
+        <nav >
+            <ul>
+                <li class="first" (click)="changerComponent('publier')">PUBLIER UNE OFFRE</li>
+                <li (click)="changerComponent('offres')">OFFRES</li>
+                <li (click)="changerComponent('candidats')">CANDIDATS</li>
+                <li (click)="changerComponent('cvs')">CVS</li>
+            </ul>
+        </nav>
+    </div>
+     -->
+    <div class="parent">
+        <div class="tablecontainer">
+            <div class="search">
+                <div>
+                    <p>Rechercher par : </p>
+                    <mat-radio-group
+                        aria-labelledby="example-radio-group-label"
+                        class="example-radio-group"
+                        [(ngModel)]="item">
+                        <mat-radio-button (change)="resetSearchText()" class="example-radio-button" *ngFor="let item of itemsearch" [value]="item">
+                            {{item}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                
+                <input (keyup)="rechercher()" [(ngModel)]="searchText" type="text" class="searchInput" placeholder="Rechercher ..." autocomplete="on">
+                
+            </div>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NOM</th>
+                            <th>PRENOM</th>
+                            <th>TELEPHONE</th>
+                            <th>EMAIL</th>
+                            <th class="controle_border" colspan="2" >CONTROLE</th>
+                        </tr>
+                        
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let candidat of CANDIDATS, let i=index">
+                            <td data-label="NOM">{{candidat.NOM}}</td>
+                            <td data-label="PRENOM">{{candidat.PRENOM}}</td>
+                            <td data-label="TELEPHONE">{{candidat.TELEPHONE}}</td>
+                            <td data-label="EMAIL">{{candidat.EMAIL}}</td>
+                            <td class="delete controle_border"><button (click)="supprimer(candidat.EMAIL)" type="button" mat-button>Supprimer</button></td>
+                            <td class="afficher"><button (click)="afficher(i)" type="button" mat-button>Afficher</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>  
+        </div>
+        
+        
+        
+        <div class="container" *ngIf="showCandidat" >
+    
+            <div class="form-container">
+                <div class="form">
+                    <div class="title">
+                        <h1>Information</h1>
+                    </div>
+                    <div class="twoColumns">
+                        <div class="flex">
+                            <div class="flex-child">
+                                <div class="labels">
+                                    <label for="nom">Nom</label>
+                                    <label for="prenom">prenom</label>
+                                    <label for="telephone">telephone</label>
+                                    <label for="email">email</label>
+                                </div>
+                                <div class="inputs">
+                                    <input disabled type="text" id="nom" name="nom" [(ngModel)]="myCandidat.NOM">
+                                    <input disabled type="text" id="prenom" name="prenom" [(ngModel)]="myCandidat.PRENOM">
+                                    <input disabled type="text" id="telephone" name="telephone" [(ngModel)]="myCandidat.TELEPHONE">
+                                    <input disabled type="text" id="email" name="email" [(ngModel)]="myCandidat.EMAIL">
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="flex">
+                            <div class="flex-child">
+                                <div class="labels">
+                                    <label for="datenaissance">datenaissance</label>
+                                    <label for="ville"> ville</label>
+                                    <label for="nationalite">nationalite</label>
+                                    <label for="adresse">adresse</label>
+                                </div>
+                                <div class="inputs">
+                                    <input disabled type="date" id="datenaissance" name="datenaissance" [(ngModel)]="myCandidat.DATENAISSANCE">
+                                    <input disabled type="text" id="ville" name="ville" [(ngModel)]="myCandidat.VILLE">
+                                    <input disabled type="text" id="nationalite" name="nationalite" [(ngModel)]="myCandidat.NATIONALITE">
+                                    <input disabled type="text" id="adresse" name="adresse" [(ngModel)]="myCandidat.ADRESSE">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+        
+                <div class="form">
+                    <div class="title">
+                        <h1>Formation</h1>
+                    </div>
+        
+                    <div class="margin">
+                        <div *ngFor="let form of formationListe">
+                            <div class="flex">
+                                <div class="flex-child">
+                                    <div class="labels">
+                                        <label for="diplome">diplome</label>
+                                        <label for="institut">institut</label>
+                                        <label for="anneescolaire">annee scolaire</label>
+                                        <label for="mention">mention</label>
+                                    </div>
+                                    <div class="inputs">
+                                        <input disabled type="text" id="diplome" name="diplome" [(ngModel)]="form.DIPLOME">
+                                        <input disabled type="text" id="institut" name="institut" [(ngModel)]="form.INSTITUT">
+                                        <input disabled type="text" id="anneescolaire" name="anneescolaire" [(ngModel)]="form.ANNEESCOLAIRE">
+                                        <input disabled type="text" id="mention" name="mention" [(ngModel)]="form.MENTION">
+                                    </div>
+                                </div>
+                            </div>
+        
+                        </div> 
+                    </div>
+        
+                </div>
+        
+                <div class="form">
+                    <div class="title">
+                        <h1>Expérience</h1>
+                    </div>
+                    <div class="margin">
+                        <div class="info" *ngFor="let exp of experienceListe,let i index">
+                            <div class="flex">
+                                <div class="flex-child">
+                                    <div class="labels">
+                                        <label for="type">type</label>
+                                        <label for="datedebut">date debut</label>
+                                        <label for="entreprise">entreprise</label>
+                                        <label for="departementservice">departement service</label>
+                                    </div>
+                                    <div class="inputs">
+                                        <input disabled type="text" id="type" name="type" [(ngModel)]="exp.TYPE">
+                                        <input disabled type="text" id="datedebut" name="datedebut" [(ngModel)]="exp.DATEDEBUT" maxlength="10">
+                                        <input disabled type="text" id="entreprise" name="entreprise" [(ngModel)]="exp.ENTREPRISE">
+                                        <input disabled type="text" id="departementservice" name="departementservice" [(ngModel)]="exp.DEPARTEMENTSERVICE">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+        
+                <div class="form">
+                    <div class="title">
+                        <h1>Specialité</h1>
+                    </div>
+                    <div class="margin">
+                        <div *ngFor="let spec of specialiteListe">
+                            <div class="flex">
+                                <div class="flex-child">
+                                    <div class="labels">
+                                        <label for="specialite">Specialité</label>
+                                    </div>
+                                    <div class="inputs">
+                                        <input disabled type="text" id="specialite" name="specialite" [(ngModel)]="spec.INTITULE">
+                                    </div>
+                                </div>
+                            </div>
+                                 
+                        </div>
+                    </div>
+        
+                </div>
+        
+                <div class="form">
+                    <div class="title">
+                        <h1>Langue</h1>
+                    </div>
+                    <div class="margin">
+                        <div *ngFor="let lang of langueListe">
+                            <div class="flex">
+                                <div class="flex-child">
+                                    <div class="labels">
+                                        <label for="nom">Nom</label>
+                                        <label for="niveau">niveau</label>
+                                    </div>
+                                    <div class="inputs">
+                                        <input disabled type="text" id="nom" name="nom" [(ngModel)]="lang.NOM" >
+                                        <input disabled type="text" id="niveau " name="niveau" [(ngModel)]="lang.NIVEAU">
+                                    </div>
+                                </div>
+                            </div>
+                                 
+                        </div>
+                    </div>
+        
+                </div>
+        
+                <div class="form">
+                    <div class="title">
+                        <h1>Centre interet</h1>
+                    </div>
+                    <div class="margin">
+                        <div *ngFor="let centre of centreInteretListe">
+                            <div class="flex">
+                                <div class="flex-child">
+                                    <div class="labels">
+                                        <label for="centreinteret">Centre interet</label>
+                                    </div>
+                                    <div class="inputs">
+                                        <input disabled type="text" id="centreinteret " name="centreinteret" [(ngModel)]="centre.INTITULE">
+                                    </div>
+                                </div>
+                            </div>
+                                 
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        
+        
+        
+        </div>
+    
+    </div>
+<!-- </div> -->
+

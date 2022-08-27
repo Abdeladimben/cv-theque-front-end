@@ -1,0 +1,269 @@
+<div class="parent">
+    <div class="navigate" routerLink="/utilisateurOffres">offres</div>
+    <div class="container" >
+    
+        <div class="form-container">
+            <div class="form">
+                <div class="title">
+                    <h1>Information</h1>
+                </div>
+                <div class="twoColumns">
+                    <div class="flex">
+                        <div class="flex-child">
+                            <div class="labels">
+                                <label for="nom">Nom</label>
+                                <label for="prenom">prenom</label>
+                                <label for="telephone">telephone</label>
+                                <label for="email">email</label>
+                            </div>
+                            <div class="inputs">
+                                <input disabled type="text" id="nom" name="nom" [(ngModel)]="myCandidat.NOM">
+                                <input disabled type="text" id="prenom" name="prenom" [(ngModel)]="myCandidat.PRENOM">
+                                <input disabled type="text" id="telephone" name="telephone" [(ngModel)]="myCandidat.TELEPHONE">
+                                <input disabled type="text" id="email" name="email" [(ngModel)]="myCandidat.EMAIL">
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="flex">
+                        <div class="flex-child">
+                            <div class="labels">
+                                <label for="datenaissance">datenaissance</label>
+                                <label for="lieunaissance">lieunaissance</label>
+                                <label for="nationalite">nationalite</label>
+                                <label for="adresse">adresse</label>
+                            </div>
+                            <div class="inputs">
+                                <input disabled type="date" id="datenaissance" name="datenaissance" [(ngModel)]="myCandidat.DATENAISSANCE">
+                                <input disabled type="text" id="lieunaissance" name="lieunaissance" [(ngModel)]="myCandidat.VILLE">
+                                <input disabled type="text" id="nationalite" name="nationalite" [(ngModel)]="myCandidat.NATIONALITE">
+                                <input disabled type="text" id="adresse" name="adresse" [(ngModel)]="myCandidat.ADRESSE">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+    
+            <div class="form">
+                <div class="title">
+                    <h1>Formation</h1>
+                    <button class="add" type="button" (click)="showAddForm('formation')">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+    
+                <div class="margin">
+                    <div *ngFor="let form of formation">
+                        <div class="flex">
+                            <div class="flex-child">
+                                <div class="labels">
+                                    <label for="diplome">diplome</label>
+                                    <label for="institut">institut</label>
+                                    <label for="anneescolaire">annee scolaire</label>
+                                    <label for="mention">mention</label>
+                                </div>
+                                <div class="inputs">
+                                    <input disabled type="text" id="diplome" name="diplome" [(ngModel)]="form.DIPLOME">
+                                    <input disabled type="text" id="institut" name="institut" [(ngModel)]="form.INSTITUT">
+                                    <input disabled type="text" id="anneescolaire" name="anneescolaire" [(ngModel)]="form.ANNEESCOLAIRE">
+                                    <input disabled type="text" id="mention" name="mention" [(ngModel)]="form.MENTION">
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                    <h2 class="newTitle" *ngIf="showAddFormation">Nouveau formation</h2>
+                    <div class="addinput" *ngIf="showAddFormation" [formGroup]="formationForm">
+                        <div>
+                            <div class="labels">
+                                <label for="adddiplome">diplome</label>
+                                <label for="addinstitut">institut</label>
+                                <label for="addanneescolaire">annee scolaire</label>
+                                <label for="addmention">mention</label>
+                            </div>
+                            <div class="inputs">
+                                <input type="text" id="adddiplome" name="adddiplome" formControlName="diplome">
+                                <input type="text" id="addinstitut" name="addinstitut" formControlName="institut">
+                                <input type="text" id="addanneescolaire" name="addanneescolaire" formControlName="anneescolaire">
+                                <input type="text" id="addmention" name="addmention" formControlName="mention">
+                            </div>
+                        </div>
+                        <button [disabled]="formationForm.invalid" class="buttonAjouter" (click)="save('formation')" >ajouter</button>
+                    </div>    
+                </div>
+    
+            </div>
+    
+            <div class="form">
+                <div class="title">
+                    <h1>Expérience</h1>
+                    <button class="add" type="button" (click)="showAddForm('experience')">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <div class="margin">
+                    <div class="info" *ngFor="let exp of experience,let i index">
+                        <div class="flex">
+                            <div class="flex-child">
+                                <div class="labels">
+                                    <label for="type">type</label>
+                                    <label for="datedebut">date debut</label>
+                                    <label for="entreprise">entreprise</label>
+                                    <label for="departementservice">departement service</label>
+                                </div>
+                                <div class="inputs">
+                                    <input disabled type="text" id="type" name="type" [(ngModel)]="exp.TYPE">
+                                    <input disabled type="text" id="datedebut" name="datedebut" [(ngModel)]="exp.DATEDEBUT" maxlength="10">
+                                    <input disabled type="text" id="entreprise" name="entreprise" [(ngModel)]="exp.ENTREPRISE">
+                                    <input disabled type="text" id="departementservice" name="departementservice" [(ngModel)]="exp.DEPARTEMENTSERVICE">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="newTitle" *ngIf="showAddExperience">Nouveau expérience</h2>
+                    <div class="addinput" *ngIf="showAddExperience" [formGroup]="experienceForm">
+                        <div>
+    
+                            <div class="labels">
+                                <label for="addtype">type</label>
+                                <label for="adddatedebut">date debut</label>
+                                <label for="addentreprise">entreprise</label>
+                                <label for="adddepartementservice">departement service</label>
+                            </div>
+                            <div class="inputs">
+                                <input type="text" id="addtype" name="addtype" formControlName="type">
+                                <input type="date" id="adddatedebut" name="adddatedebut" formControlName="datedebut">
+                                <input type="text" id="addentreprise" name="addentreprise" formControlName="entreprise">
+                                <input type="text" id="adddepartementservice" name="adddepartementservice" formControlName="departementservice">
+                            </div>
+                            
+    
+                        </div>
+                        <button [disabled]="experienceForm.invalid" class="buttonAjouter" (click)="save('experience')">ajouter</button>
+                    </div>  
+                </div>
+    
+            </div>
+    
+            <div class="form">
+                <div class="title">
+                    <h1>Specialité</h1>
+                    <button class="add" type="button" (click)="showAddForm('specilite')">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <div class="margin">
+                    <div *ngFor="let spec of specialite">
+                        <div class="flex">
+                            <div class="flex-child">
+                                <div class="labels">
+                                    <label for="specialite">Specialité</label>
+                                </div>
+                                <div class="inputs">
+                                    <input disabled type="text" id="specialite" name="specialite" [(ngModel)]="spec.INTITULE">
+                                </div>
+                            </div>
+                        </div>
+                             
+                    </div>
+                    <h2 class="newTitle" *ngIf="showAddSpecialite">Nouveau specialité</h2>
+                    <div class="addinput" *ngIf="showAddSpecialite" [formGroup]="specialiteForm">
+                        <div>
+                            <div class="labels">
+                                <label for="addspecialite">Specialité</label>
+                            </div>
+                            <div class="inputs">
+                                <input type="text" id="addspecialite" name="addspecialite" formControlName="specialite">
+                            </div>
+                        </div>
+                        <button [disabled]="specialiteForm.invalid" class="buttonAjouter" (click)="save('specilite')">ajouter</button>
+                    </div>  
+                </div>
+    
+            </div>
+    
+            <div class="form">
+                <div class="title">
+                    <h1>Langue</h1>
+                    <button class="add" type="button" (click)="showAddForm('langue')">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <div class="margin">
+                    <div *ngFor="let lang of langue">
+                        <div class="flex">
+                            <div class="flex-child">
+                                <div class="labels">
+                                    <label for="nom">Nom</label>
+                                    <label for="niveau">niveau</label>
+                                </div>
+                                <div class="inputs">
+                                    <input disabled type="text" id="nom" name="nom" [(ngModel)]="lang.NOM" >
+                                    <input disabled type="text" id="niveau " name="niveau" [(ngModel)]="lang.NIVEAU">
+                                </div>
+                            </div>
+                        </div>
+                             
+                    </div>
+                    <h2 class="newTitle" *ngIf="showAddLangue">Nouveau langue</h2>
+                    <div class="addinput" *ngIf="showAddLangue" [formGroup]="langueForm">
+                        <div>
+                            <div class="labels">
+                                <label for="addnom">Nom</label>
+                                <label for="addniveau">niveau</label>
+                            </div>
+                            <div class="inputs">
+                                <input type="text" id="addnom" name="addnom" formControlName="nom">
+                                <input type="text" id="addniveau " name="addniveau" formControlName="niveau">
+                            </div>
+                        </div>
+                        <button [disabled]="langueForm.invalid" class="buttonAjouter" (click)="save('langue')">ajouter</button>
+                    </div>  
+                </div>
+    
+            </div>
+    
+            <div class="form">
+                <div class="title">
+                    <h1>Centre interet</h1>
+                    <button class="add" type="button" (click)="showAddForm('centre')">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <div class="margin">
+                    <div *ngFor="let centre of centreInteret">
+                        <div class="flex">
+                            <div class="flex-child">
+                                <div class="labels">
+                                    <label for="centreinteret">Centre interet</label>
+                                </div>
+                                <div class="inputs">
+                                    <input disabled type="text" id="centreinteret " name="centreinteret" [(ngModel)]="centre.INTITULE">
+                                </div>
+                            </div>
+                        </div>
+                             
+                    </div>
+                    <h2 class="newTitle" *ngIf="showAddCentreInteret">Nouveau centre interet</h2>
+                    <div class="addinput" *ngIf="showAddCentreInteret" [formGroup]="centreInteretForm">
+                        <div>
+                            <div class="labels">
+                                <label for="centreinteret">Centre interet</label>
+                            </div>
+                            <div class="inputs">
+                                <input type="text" id="centreinteret " name="centreinteret" formControlName="centreinteret">
+                            </div>
+                        </div>
+                        <button [disabled]="centreInteretForm.invalid" class="buttonAjouter" (click)="save('centre')">ajouter</button>
+                    </div>  
+                </div>
+    
+            </div>
+        </div>
+    
+    
+    
+    </div>
+</div>
