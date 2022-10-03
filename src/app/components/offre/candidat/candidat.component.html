@@ -12,11 +12,11 @@
                     </mat-radio-button>
                 </mat-radio-group>
             </div>
-            
+
             <input (keyup)="rechercher()" [(ngModel)]="searchText" type="text" class="searchInput" placeholder="Rechercher ..." autocomplete="on">
-            
+
         </div> -->
-    
+
         <table>
             <thead>
                 <tr>
@@ -26,7 +26,7 @@
                     <th>EMAIL</th>
                     <th class="controle_border" >CONTROLE</th>
                 </tr>
-                
+
             </thead>
             <tbody>
                 <tr *ngFor="let candidat of CANDIDATS, let i=index">
@@ -39,11 +39,11 @@
             </tbody>
         </table>
     </div>
-    
-    
-    
+
+
+
     <div class="container" *ngIf="showCandidat" >
-    
+
         <div class="form-container">
             <div class="form">
                 <div class="title">
@@ -66,7 +66,7 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <div class="flex">
                         <div class="flex-child">
                             <div class="labels">
@@ -77,22 +77,22 @@
                             </div>
                             <div class="inputs">
                                 <input disabled type="date" id="datenaissance" name="datenaissance" [(ngModel)]="myCandidat.DATENAISSANCE">
-                                <input disabled type="text" id="lieunaissance" name="lieunaissance" [(ngModel)]="myCandidat.VILLE">
+                                <input disabled type="text" id="lieunaissance" name="lieunaissance" [(ngModel)]="myCandidat.LIEUNAISSANCE">
                                 <input disabled type="text" id="nationalite" name="nationalite" [(ngModel)]="myCandidat.NATIONALITE">
                                 <input disabled type="text" id="adresse" name="adresse" [(ngModel)]="myCandidat.ADRESSE">
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
-                
+
             </div>
-    
+
             <div class="form">
                 <div class="title">
                     <h1>Formation</h1>
                 </div>
-    
+
                 <div class="margin">
                     <div *ngFor="let form of formationListe">
                         <div class="flex">
@@ -111,12 +111,12 @@
                                 </div>
                             </div>
                         </div>
-    
-                    </div> 
+
+                    </div>
                 </div>
-    
+
             </div>
-    
+
             <div class="form">
                 <div class="title">
                     <h1>Expérience</h1>
@@ -141,9 +141,9 @@
                         </div>
                     </div>
                 </div>
-    
+
             </div>
-    
+
             <div class="form">
                 <div class="title">
                     <h1>Specialité</h1>
@@ -160,12 +160,12 @@
                                 </div>
                             </div>
                         </div>
-                             
+
                     </div>
                 </div>
-    
+
             </div>
-    
+
             <div class="form">
                 <div class="title">
                     <h1>Langue</h1>
@@ -184,12 +184,12 @@
                                 </div>
                             </div>
                         </div>
-                             
+
                     </div>
                 </div>
-    
+
             </div>
-    
+
             <div class="form">
                 <div class="title">
                     <h1>Centre interet</h1>
@@ -206,16 +206,16 @@
                                 </div>
                             </div>
                         </div>
-                             
+
                     </div>
                 </div>
-    
+
             </div>
         </div>
-    
-    
-    
+
+
+
     </div>
 </div>
-    
-    
+
+

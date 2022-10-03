@@ -29,7 +29,7 @@ export class ProfilComponent implements OnInit {
     NOM:'',
     PRENOM:'',
     DATENAISSANCE:'',
-    VILLE:'',
+    LIEUNAISSANCE:'',
     NATIONALITE:'',
     ADRESSE:'',
     TELEPHONE:'',
@@ -115,7 +115,7 @@ export class ProfilComponent implements OnInit {
     centreinteret:['',Validators.required]
   })
 
-  
+
 
 
   async ngOnInit(): Promise<void> {
@@ -151,8 +151,8 @@ export class ProfilComponent implements OnInit {
       })
 
     }
-    
-    
+
+
   }
 
   showAddForm(choix:any){
@@ -160,7 +160,7 @@ export class ProfilComponent implements OnInit {
       case 'formation':
         this.showAddFormation=!this.showAddFormation;
         break;
-    
+
       case 'experience':
         this.showAddExperience=!this.showAddExperience;
         break;
@@ -192,7 +192,7 @@ export class ProfilComponent implements OnInit {
           MENTION:this.formationForm.value.mention,
           IDCANDIDAT:localStorage.getItem('idcandidat')+'',
         };
-        
+
         this.formationService.createNewFormation(this.myFormation).
           then((res:any)=>{
             if(this.formation==undefined){
@@ -200,7 +200,7 @@ export class ProfilComponent implements OnInit {
             }else{
               this.formation.push(this.myFormation);
             }
-            
+
             console.log(res);
             this.formationForm.controls['diplome'].setValue('');
             this.formationForm.controls['institut'].setValue('');
@@ -211,7 +211,7 @@ export class ProfilComponent implements OnInit {
             console.log(err);
           })
         break;
-    
+
       case 'experience':
         this.myExperience={
           IDEXPERIENCE:'',
@@ -238,7 +238,7 @@ export class ProfilComponent implements OnInit {
           }).catch((err:any)=>{
             console.log(err);
           })
-      
+
         break;
 
       case 'specilite':
@@ -254,7 +254,7 @@ export class ProfilComponent implements OnInit {
             }else{
               this.specialite.push(this.mySpecialite);
             }
-            
+
             console.log(res);
             this.specialiteForm.controls['specialite'].setValue('');
             this.showAddSpecialite=!this.showAddSpecialite;
@@ -277,7 +277,7 @@ export class ProfilComponent implements OnInit {
             }else{
               this.langue.push(this.myLangue);
             }
-            
+
             console.log(res);
             this.langueForm.controls['nom'].setValue('');
             this.langueForm.controls['niveau'].setValue('');

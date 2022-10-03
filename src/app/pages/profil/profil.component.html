@@ -1,7 +1,7 @@
 <div class="parent">
     <div class="navigate" routerLink="/utilisateurOffres">offres</div>
     <div class="container" >
-    
+
         <div class="form-container">
             <div class="form">
                 <div class="title">
@@ -24,7 +24,7 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <div class="flex">
                         <div class="flex-child">
                             <div class="labels">
@@ -35,17 +35,17 @@
                             </div>
                             <div class="inputs">
                                 <input disabled type="date" id="datenaissance" name="datenaissance" [(ngModel)]="myCandidat.DATENAISSANCE">
-                                <input disabled type="text" id="lieunaissance" name="lieunaissance" [(ngModel)]="myCandidat.VILLE">
+                                <input disabled type="text" id="lieunaissance" name="lieunaissance" [(ngModel)]="myCandidat.LIEUNAISSANCE">
                                 <input disabled type="text" id="nationalite" name="nationalite" [(ngModel)]="myCandidat.NATIONALITE">
                                 <input disabled type="text" id="adresse" name="adresse" [(ngModel)]="myCandidat.ADRESSE">
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
-                
+
             </div>
-    
+
             <div class="form">
                 <div class="title">
                     <h1>Formation</h1>
@@ -53,7 +53,7 @@
                         <mat-icon>add</mat-icon>
                     </button>
                 </div>
-    
+
                 <div class="margin">
                     <div *ngFor="let form of formation">
                         <div class="flex">
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                     </div>
                     <h2 class="newTitle" *ngIf="showAddFormation">Nouveau formation</h2>
                     <div class="addinput" *ngIf="showAddFormation" [formGroup]="formationForm">
@@ -91,11 +91,11 @@
                             </div>
                         </div>
                         <button [disabled]="formationForm.invalid" class="buttonAjouter" (click)="save('formation')" >ajouter</button>
-                    </div>    
+                    </div>
                 </div>
-    
+
             </div>
-    
+
             <div class="form">
                 <div class="title">
                     <h1>Expérience</h1>
@@ -125,7 +125,7 @@
                     <h2 class="newTitle" *ngIf="showAddExperience">Nouveau expérience</h2>
                     <div class="addinput" *ngIf="showAddExperience" [formGroup]="experienceForm">
                         <div>
-    
+
                             <div class="labels">
                                 <label for="addtype">type</label>
                                 <label for="adddatedebut">date debut</label>
@@ -138,15 +138,15 @@
                                 <input type="text" id="addentreprise" name="addentreprise" formControlName="entreprise">
                                 <input type="text" id="adddepartementservice" name="adddepartementservice" formControlName="departementservice">
                             </div>
-                            
-    
+
+
                         </div>
                         <button [disabled]="experienceForm.invalid" class="buttonAjouter" (click)="save('experience')">ajouter</button>
-                    </div>  
+                    </div>
                 </div>
-    
+
             </div>
-    
+
             <div class="form">
                 <div class="title">
                     <h1>Specialité</h1>
@@ -166,7 +166,7 @@
                                 </div>
                             </div>
                         </div>
-                             
+
                     </div>
                     <h2 class="newTitle" *ngIf="showAddSpecialite">Nouveau specialité</h2>
                     <div class="addinput" *ngIf="showAddSpecialite" [formGroup]="specialiteForm">
@@ -179,11 +179,11 @@
                             </div>
                         </div>
                         <button [disabled]="specialiteForm.invalid" class="buttonAjouter" (click)="save('specilite')">ajouter</button>
-                    </div>  
+                    </div>
                 </div>
-    
+
             </div>
-    
+
             <div class="form">
                 <div class="title">
                     <h1>Langue</h1>
@@ -205,7 +205,7 @@
                                 </div>
                             </div>
                         </div>
-                             
+
                     </div>
                     <h2 class="newTitle" *ngIf="showAddLangue">Nouveau langue</h2>
                     <div class="addinput" *ngIf="showAddLangue" [formGroup]="langueForm">
@@ -220,11 +220,11 @@
                             </div>
                         </div>
                         <button [disabled]="langueForm.invalid" class="buttonAjouter" (click)="save('langue')">ajouter</button>
-                    </div>  
+                    </div>
                 </div>
-    
+
             </div>
-    
+
             <div class="form">
                 <div class="title">
                     <h1>Centre interet</h1>
@@ -244,7 +244,7 @@
                                 </div>
                             </div>
                         </div>
-                             
+
                     </div>
                     <h2 class="newTitle" *ngIf="showAddCentreInteret">Nouveau centre interet</h2>
                     <div class="addinput" *ngIf="showAddCentreInteret" [formGroup]="centreInteretForm">
@@ -257,13 +257,13 @@
                             </div>
                         </div>
                         <button [disabled]="centreInteretForm.invalid" class="buttonAjouter" (click)="save('centre')">ajouter</button>
-                    </div>  
+                    </div>
                 </div>
-    
+
             </div>
         </div>
-    
-    
-    
+
+
+
     </div>
 </div>

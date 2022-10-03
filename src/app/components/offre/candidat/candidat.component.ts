@@ -24,7 +24,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CandidatComponent implements OnInit {
 
-  
+
   cvs:Cv[]=[];
   IDCANDIDATS:any[]=[];
   CANDIDATS:any[]=[];
@@ -76,7 +76,7 @@ export class CandidatComponent implements OnInit {
     NOM:'',
     PRENOM:'',
     DATENAISSANCE:'',
-    VILLE:'',
+    LIEUNAISSANCE:'',
     NATIONALITE:'',
     ADRESSE:'',
     TELEPHONE:'',
@@ -120,8 +120,8 @@ export class CandidatComponent implements OnInit {
     IDCANDIDAT:''
   }
 
-  constructor(private router: Router,public cvService: CvService,public candidatService: CandidatService,public userService: UserService,public centreInteretService:CentreInteretService,public experienceService:ExperienceService,public formationService:FormationService,public langueService:LangueService,public specialiteService:SpecialiteService,public postulerService:PostulerService) { 
-    
+  constructor(private router: Router,public cvService: CvService,public candidatService: CandidatService,public userService: UserService,public centreInteretService:CentreInteretService,public experienceService:ExperienceService,public formationService:FormationService,public langueService:LangueService,public specialiteService:SpecialiteService,public postulerService:PostulerService) {
+
   }
 
   ngOnInit(){
@@ -145,20 +145,20 @@ export class CandidatComponent implements OnInit {
     }).catch((err:any)=>{
       console.log(err);
     })
-    
-    
-    
+
+
+
   }
 
 
 
 
-  
+
   resetSearchText() {
     this.searchText='';
   }
 
-  
+
 
   rechercher(){
     if(this.item=="DIPLOME"){
@@ -187,7 +187,7 @@ export class CandidatComponent implements OnInit {
     })
 
     this.experienceService.getExperienceWithCandidat(this.CANDIDATS[i].IDCANDIDAT).then((res:any)=>{
-      
+
       this.experienceListe=res?.data;
       this.experienceListe.forEach((exp:any)=>{
         exp.DATEDEBUT=exp.DATEDEBUT.slice(0,10);

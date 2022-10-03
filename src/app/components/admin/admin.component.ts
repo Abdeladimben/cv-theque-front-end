@@ -37,7 +37,7 @@ export class AdminComponent implements OnInit {
     NOM:'',
     PRENOM:'',
     DATENAISSANCE:'',
-    VILLE:'',
+    LIEUNAISSANCE:'',
     NATIONALITE:'',
     ADRESSE:'',
     TELEPHONE:'',
@@ -48,11 +48,11 @@ export class AdminComponent implements OnInit {
   constructor(public cvService: CvService,public candidatService: CandidatService,public userService: UserService,public centreInteretService:CentreInteretService,public experienceService:ExperienceService,public formationService:FormationService,public langueService:LangueService,public specialiteService:SpecialiteService) { }
 
   ngOnInit(): void {
-    
+
 
       this.remplir();
 
-    
+
   }
 
 
@@ -60,14 +60,14 @@ export class AdminComponent implements OnInit {
     this.CANDIDATS=[];
     this.candidatService.getCandidats().then((res:any)=>{
       this.CANDIDATS=this.resultCandidat=res.data;
-      
+
       console.log(this.CANDIDATS);
     }).catch((err:any)=>{
       console.log(err);
     })
-    
-    
-    
+
+
+
   }
 
 
@@ -75,11 +75,11 @@ export class AdminComponent implements OnInit {
     this.userService.deleteUser(email).then((res:any)=>{
       console.log(res);
       this.CANDIDATS=this.resultCandidat=this.resultCandidat.filter((element:any)=> element.EMAIL!=email.EMAIL);
-      
+
     }).catch((err)=>{
       console.log(err);
     })
-      
+
   }
 
 
@@ -87,7 +87,7 @@ export class AdminComponent implements OnInit {
     this.searchText='';
   }
 
-  
+
 
   rechercher(){
     if(this.item=="NOM"){
@@ -116,7 +116,7 @@ export class AdminComponent implements OnInit {
     })
 
     this.experienceService.getExperienceWithCandidat(this.CANDIDATS[i].IDCANDIDAT).then((res:any)=>{
-      
+
       this.experienceListe=res?.data;
       this.experienceListe?.forEach((exp:any)=>{
         exp.DATEDEBUT=exp.DATEDEBUT.slice(0,10);

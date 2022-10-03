@@ -13,7 +13,6 @@ export class CreateaccountComponent implements OnInit {
 
 
   selectedValue: string='';
-  types:any[]=['admin','utilisateur']
 
   myUser:User={
     EMAIL:'',
@@ -28,8 +27,7 @@ export class CreateaccountComponent implements OnInit {
 
   createAccountForm=this.fb.group({
     email:['',[Validators.required,Validators.email]],
-    password:['',[Validators.required,Validators.minLength(6)]],
-    type:['',Validators.required]
+    password:['',[Validators.required,Validators.minLength(6)]]
   })
 
 
@@ -49,22 +47,20 @@ export class CreateaccountComponent implements OnInit {
     this.myUser={
       EMAIL:this.createAccountForm.value.email,
       PASSWORD:this.createAccountForm.value.password,  ///encryptedPassword
-      TYPE:this.createAccountForm.value.type
+      TYPE:'utilisateur'
     }
 
     this.userService.createNewUser(this.myUser).then((res:any) =>{
       console.log(res);
       this.userService.user=res;
       localStorage.setItem('email', this.createAccountForm.value.email);
-      localStorage.setItem('type',this.createAccountForm.value.type);
+      localStorage.setItem('type','utilisateur');
       localStorage.setItem('connected', 'true');
       console.log('succées')
-      if (this.createAccountForm.value.type=='utilisateur'){
-        this.router.navigate(['/candidatInformation']);
-      }else if(this.createAccountForm.value.type=='admin'){
-        this.router.navigate(['/admin']);
-      }
-      
+
+      this.router.navigate(['/candidatInformation']);
+
+
     }).catch((err)=>{
       console.log(err);
     })

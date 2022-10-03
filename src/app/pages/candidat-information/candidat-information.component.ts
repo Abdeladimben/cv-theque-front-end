@@ -14,14 +14,14 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CandidatInformationComponent implements OnInit {
 
-  
+
 
   myCandidat:Candidat={
     IDCANDIDAT:'',
     NOM:'',
     PRENOM:'',
     DATENAISSANCE:'',
-    VILLE:'',
+    LIEUNAISSANCE:'',
     NATIONALITE:'',
     ADRESSE:'',
     TELEPHONE:'',
@@ -36,7 +36,7 @@ export class CandidatInformationComponent implements OnInit {
       name:['',Validators.required],
       prenom:['',Validators.required],
       datenaissance:['',Validators.required],
-      ville:['',Validators.required],
+      lieunaissance:['',Validators.required],
       adresse:['',Validators.required],
       telephone:['',Validators.required]
     })
@@ -55,7 +55,7 @@ export class CandidatInformationComponent implements OnInit {
       }else{
         this.exist=true;
         this.myCandidat=res.data;
-        
+
         console.log(this.myCandidat);
       }
     }).catch((err)=>{
@@ -64,10 +64,10 @@ export class CandidatInformationComponent implements OnInit {
 
   }
 
-  
+
 
   async next(){
-    
+
 
 
       this.myCandidat={
@@ -75,7 +75,7 @@ export class CandidatInformationComponent implements OnInit {
         NOM:this.candidatForm.value.name,
         PRENOM:this.candidatForm.value.prenom,
         DATENAISSANCE:moment(this.candidatForm.value.datenaissance).format('YYYY/MM/DD'),
-        VILLE:this.candidatForm.value.ville,
+        LIEUNAISSANCE:this.candidatForm.value.lieunaissance,
         NATIONALITE:'maroc',
         ADRESSE:this.candidatForm.value.adresse,
         TELEPHONE:this.candidatForm.value.telephone,
@@ -86,7 +86,7 @@ export class CandidatInformationComponent implements OnInit {
       }).catch((err)=>{
         console.log(err);
       })
-      
+
 
       this.candidatService.getCandidatWithEmail(localStorage.getItem('email')+'').then((resultat:any)=>{
         console.log("getCandidatWithEmail");
@@ -98,11 +98,11 @@ export class CandidatInformationComponent implements OnInit {
       }).catch((err)=>{
         console.log(err);
       })
-        
 
 
 
-    
+
+
   }
 
 }

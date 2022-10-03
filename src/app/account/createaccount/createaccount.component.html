@@ -16,21 +16,13 @@
                     {{createAccountForm.controls['password'].hasError('required')?'Required':'Mot de passe doit passer 6 lettre'}}
                 </mat-error>
             </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>type</mat-label>
-                <mat-select formControlName="type">
-                  <mat-option *ngFor="let type of types" [value]="type">
-                    {{type}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
         </form>
         <div class="button-container">
             <button [disabled]="createAccountForm.invalid" (click)="create()" mat-raised-button class="login-button">Créer un compte</button>
             <p>OR</p>
             <button routerLink="/login" mat-button>Login</button>
         </div>
-        
+
     </div>
 </div>
 

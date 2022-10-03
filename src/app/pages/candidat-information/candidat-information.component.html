@@ -28,7 +28,7 @@
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                     <mat-label>Enter ton ville</mat-label>
-                    <input  matInput formControlName="ville">
+                    <input  matInput formControlName="lieunaissance">
 
                 </mat-form-field>
                 <mat-form-field appearance="outline">
@@ -36,13 +36,13 @@
                     <input  matInput formControlName="adresse">
 
                 </mat-form-field>
-                
+
             </div>
         </form>
         <div class="button-container">
             <button [disabled]="candidatForm.invalid" (click)="next()" mat-raised-button class="login-button">NEXT</button>
         </div>
-        
+
     </div>
 </div>
 

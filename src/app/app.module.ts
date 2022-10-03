@@ -30,7 +30,6 @@ import { LoginComponent } from './account/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ProfilComponent } from './pages/profil/profil.component';
-import { environment } from 'src/environments/environment';
 import { AccueilComponent } from './pages/accueil/accueil/accueil.component';
 import { PublierComponent } from './components/offre/publier/publier.component';
 import { OffresComponent } from './components/offre/offres/offres.component';

@@ -1,6 +1,6 @@
 create table account(
     email VARCHAR2(50) primary key,
-    password VARCHAR2(20),
+    password VARCHAR2(40),
     type VARCHAR2(20)
 );
 
@@ -30,7 +30,7 @@ create table experiences(
     type VARCHAR2(20),
     datedebut date,
     entreprise VARCHAR2(20),
-    departementservice VARCHAR2(20)
+    departementservice VARCHAR2(20),
     idcandidat NUMBER References candidats(idcandidat) on delete cascade
 );
 
@@ -55,16 +55,6 @@ create table langues(
     idcandidat NUMBER References candidats(idcandidat) on delete cascade
 );
 
-
-create table cv(
-    idcv VARCHAR2(20) primary key,
-    idformation VARCHAR2(20) References formations(idformation) on delete cascade,
-    idspecialite VARCHAR2(20) References specialites(idspecialite) on delete cascade,
-    idexperience VARCHAR2(20) References experiences(idexperience) on delete cascade,
-    idcentreinteret VARCHAR2(20) References centreinterets(idcentreinteret) on delete cascade,
-    idlangue VARCHAR2(20) References langues(idlangue) on delete cascade,
-    idcandidat VARCHAR2(20) References candidats(idcandidat) on delete cascade
-);
 
 create table offre(
     IDOFFRE NUMBER primary key,
@@ -150,16 +140,6 @@ create table langues(
 );
 
 
-cv(
-    IDCV
-    IDFORMATION
-    IDSPECIALITE
-    IDEXPERIENCE
-    IDCENTREINTERET
-    IDLANGUE
-    IDCANDIDAT
-);
-
 offre(
     IDOFFRE
     TYPE
@@ -195,3 +175,38 @@ begin
     update offre set NBRCANDIDAT=NBRCANDIDAT-1 where IDOFFRE=:old.IDOFFRE; 
 end;
 
+
+
+CREATE SEQUENCE seq_candidat_id
+ START WITH     1
+ INCREMENT BY   1;
+
+
+CREATE SEQUENCE seq_formation_id
+ START WITH     1
+ INCREMENT BY   1;
+
+
+CREATE SEQUENCE seq_experience_id
+ START WITH     1
+ INCREMENT BY   1;
+
+
+CREATE SEQUENCE seq_centreinteret_id
+ START WITH     1
+ INCREMENT BY   1;
+
+
+CREATE SEQUENCE seq_langue_id
+ START WITH     1
+ INCREMENT BY   1;
+
+
+CREATE SEQUENCE seq_specialite_id
+ START WITH     1
+ INCREMENT BY   1;
+
+
+CREATE SEQUENCE seq_offre_id
+ START WITH     1
+ INCREMENT BY   1;

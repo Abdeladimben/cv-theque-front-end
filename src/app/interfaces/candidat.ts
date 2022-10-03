@@ -3,7 +3,7 @@ export interface Candidat {
     NOM:string;
     PRENOM:string;
     DATENAISSANCE:string;
-    VILLE:string;
+    LIEUNAISSANCE:string;
     NATIONALITE:string;
     ADRESSE:string;
     TELEPHONE:string;

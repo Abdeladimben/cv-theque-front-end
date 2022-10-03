@@ -12,6 +12,7 @@ import { Experience } from 'src/app/interfaces/experience';
 import { Specialite } from 'src/app/interfaces/specialite';
 import { Candidat } from 'src/app/interfaces/candidat';
 import { TopBarComponent } from 'src/app/components/top-bar/top-bar.component';
+import { User } from 'src/app/interfaces/user';
 
 
 
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
     NOM:'',
     PRENOM:'',
     DATENAISSANCE:'',
-    VILLE:'',
+    LIEUNAISSANCE:'',
     NATIONALITE:'',
     ADRESSE:'',
     TELEPHONE:'',
@@ -74,7 +75,12 @@ export class LoginComponent implements OnInit {
 
   login(){
     //let encryptedPassword= this.EncrDecr.set('123456$#@$^@1ERF', this.loginForm.value.password);
-    this.userService.getUsers(this.loginForm.value.email).then((res:any)=>{
+    const myUser:User={
+      EMAIL:this.loginForm.value.email,
+      PASSWORD:this.loginForm.value.password,  ///encryptedPassword
+      TYPE:'utilisateur'
+    }
+    /*this.userService.getUsers(myUser).then((res:any)=>{
       console.log(res);
       if(res.length==0){
         console.log("Account does not exist");
@@ -101,14 +107,52 @@ export class LoginComponent implements OnInit {
           }).catch((err)=>{
             console.log(err);
           })
-          
+
         }else{
           this.router.navigate(['/admin'], {relativeTo: this.route});
         }
       }
     }).catch((err)=>{
       console.log(err);
+    });*/
+
+    this.userService.getUsers(myUser).then((res:any)=>{
+      console.log(res);
+      if(res.email){
+
+        if(res.password){
+          console.log("matched");
+          this.userService.user=res.data[0];
+
+          if (this.userService.user.TYPE=='utilisateur'){
+            this.candidatService.getCandidatWithEmail(this.userService.user.EMAIL).then((res:any)=>{
+              if (res.data!=null || res.data!=undefined){
+                this.myCandidat=res.data[0];
+                localStorage.setItem('idcandidat', this.myCandidat.IDCANDIDAT);
+                this.router.navigate(['/accueil']);
+              }else{
+                this.router.navigate(['/candidatInformation']);
+              }
+            }).catch((err)=>{
+              console.log(err);
+            })
+
+          }else{
+            this.router.navigate(['/admin'], {relativeTo: this.route});
+          }
+
+        }else{
+          console.log("Password invalid");
+          this.snackBar.open("Password invalid","ok",{duration: 10 * 1000});
+        }
+      }else{ //encryptedPassword
+        console.log("Account does not exist");
+        this.snackBar.open("Account does not exist","ok",{duration: 10 * 1000});
+      }
+    }).catch((err)=>{
+      console.log(err);
     });
+
 
   }
 

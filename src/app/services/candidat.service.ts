@@ -14,7 +14,7 @@ export class CandidatService {
     NOM:'',
     PRENOM:'',
     DATENAISSANCE:'',
-    VILLE:'',
+    LIEUNAISSANCE:'',
     NATIONALITE:'',
     ADRESSE:'',
     TELEPHONE:'',
@@ -24,7 +24,7 @@ export class CandidatService {
   constructor(private http:HttpClient) { }
 
   createNewCandidat(candidatP:Candidat){
-    return new Promise((resolve, reject) => 
+    return new Promise((resolve, reject) =>
       {
         this.http.post<Candidat>(this.apiURL,candidatP)
         .subscribe
@@ -86,7 +86,7 @@ export class CandidatService {
       }
     )
   }
-  
+
 
   getCandidatWithEmail(email:string){
     return new Promise((resolve,reject) =>

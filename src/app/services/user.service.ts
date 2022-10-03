@@ -31,10 +31,10 @@ export class UserService {
     )
   }
 
-  public getUsers(email:string){
+  public getUsers(user:User){
     return new Promise((resolve,reject) =>
       {
-        this.http.get(this.apiURL+"/"+email)
+        this.http.post(this.apiURL+'/login',user)
         .subscribe(
           res=>{
             resolve(res);
