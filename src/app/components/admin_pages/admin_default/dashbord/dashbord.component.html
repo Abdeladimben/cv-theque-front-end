@@ -1,0 +1,93 @@
+
+    <div class="parent">
+        <div class="tablecontainer">
+            <div class="search">
+                <div>
+                    <p>Rechercher par : </p>
+                    <mat-radio-group
+                        aria-labelledby="example-radio-group-label"
+                        class="example-radio-group"
+                        [(ngModel)]="item">
+                        <mat-radio-button (change)="resetSearchText()" class="example-radio-button" *ngFor="let item of itemsearch" [value]="item">
+                            {{item}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+                <input (keyup)="applyFilter($event)" [(ngModel)]="searchText" type="text" class="searchInput" placeholder="Rechercher ..." autocomplete="on">
+
+            </div>
+            <div class="table">
+                <div class="mat-elevation-z8">
+                    <table mat-table [dataSource]="dataSource">
+                
+                        <ng-container matColumnDef="NOM">
+                            <th mat-header-cell *matHeaderCellDef> Nom </th>
+                            <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+                        </ng-container>
+                    
+                        <ng-container matColumnDef="PRENOM">
+                            <th mat-header-cell *matHeaderCellDef> PRENOM </th>
+                            <td mat-cell *matCellDef="let element"> {{element.prenom}} </td>
+                        </ng-container>
+                    
+                        <ng-container matColumnDef="TELEPHONE">
+                            <th mat-header-cell *matHeaderCellDef> TELEPHONE </th>
+                            <td mat-cell *matCellDef="let element"> {{element.telephone}} </td>
+                        </ng-container>
+                    
+                        <ng-container matColumnDef="EMAIL">
+                            <th mat-header-cell *matHeaderCellDef> EMAIL </th>
+                            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="CONTROLE">
+                            <th mat-header-cell *matHeaderCellDef> CONTROLE </th>
+                            <td class="controle" mat-cell *matCellDef="let element,let i=index">
+                                <button (click)="supprimer(element.uuid,i)" type="button" mat-raised-button color="warn">Supprimer</button>
+                                <button (click)="afficher(i,element.uuid)" type="button" mat-raised-button color="primary">Afficher</button>
+                                <button (click)="openDialog(modal,element.uuid,element.nom,element.prenom)" type="button" mat-raised-button color="warn">Télécharger</button>
+                            </td>
+                        </ng-container>
+                    
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                    
+                    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                                    showFirstLastButtons 
+                                    aria-label="Select page of periodic elements">
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+
+
+        <app-profil [candidat]="uuid_candidat" *ngIf="showCandidat" ></app-profil>
+        
+
+    <ng-template #modal>
+            <mat-dialog-content class="mat-typography">
+                <button mat-raised-button 
+                        [mat-dialog-close]="true" 
+                        (click)="telechargerCV()"
+                        color="primary"
+                        >Télécharger CV
+                </button>
+                <button mat-raised-button 
+                        [mat-dialog-close]="true" 
+                        (click)="telechargerLettre()"
+                        color="primary"
+                        >Télécharger Lettre de Motivation
+                </button>
+            </mat-dialog-content>
+            <mat-dialog-actions align="end">
+                <button mat-button mat-dialog-close>Cancel</button>
+            </mat-dialog-actions>
+    </ng-template>
+    
+
+
+    </div>
+
+

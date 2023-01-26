@@ -1,68 +1,53 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TopBarComponent } from './components/top-bar/top-bar.component';
+
+
+import { MatSidenavModule } from '@angular/material/sidenav'
+
+import { ServiceModule } from './modules/service/service.module';
+import { UserModule } from './modules/component/userModule/user.module';
+import { AdminModule } from './modules/component/adminModule/admin.module';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {HttpClientModule} from '@angular/common/http';
-import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
-import { RouterModule} from '@angular/router';
-import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-
-import {MatTableModule} from '@angular/material/table';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatInputModule} from '@angular/material/input';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatCardModule} from '@angular/material/card';
-import {MatSelectModule} from '@angular/material/select';
-import {MatRadioModule} from '@angular/material/radio';
-
-import { CandidatInformationComponent } from './pages/candidat-information/candidat-information.component';
-import { CreateaccountComponent } from './account/createaccount/createaccount.component';
-import { LoginComponent } from './account/login/login.component';
-import { HomeComponent } from './pages/home/home.component';
-import { AdminComponent } from './components/admin/admin.component';
-import { ProfilComponent } from './pages/profil/profil.component';
-import { AccueilComponent } from './pages/accueil/accueil/accueil.component';
-import { PublierComponent } from './components/offre/publier/publier.component';
-import { OffresComponent } from './components/offre/offres/offres.component';
-import { CandidatComponent } from './components/offre/candidat/candidat.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { UtilisateurOffresComponent } from './components/offre/utilisateur-offres/utilisateur-offres.component';
+import { LayotModule } from './modules/component/layoutModule/layot.module';
+import { MatStepperModule } from '@angular/material/stepper';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopBarComponent,
-    CandidatInformationComponent,
-    CreateaccountComponent,
-    LoginComponent,
-    HomeComponent,
-    AdminComponent,
-    ProfilComponent,
-    AccueilComponent,
-    PublierComponent,
-    OffresComponent,
-    CandidatComponent,
-    NavbarComponent,
-    UtilisateurOffresComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,
+    MatPaginatorModule,
     MatFormFieldModule,
     MatSnackBarModule,
     MatInputModule,
@@ -75,10 +60,20 @@ import { UtilisateurOffresComponent } from './components/offre/utilisateur-offre
     MatSelectModule,
     MatRadioModule,
     RouterModule,
-    provideFirebaseApp(() => initializeApp({})),
-    provideFirestore(() => getFirestore())
+    MatSidenavModule,
+    MatListModule,
+    MatSidenavModule,
+    MatDialogModule,
+    MatStepperModule,
+    MatProgressSpinnerModule,
+    ServiceModule,
+    AdminModule,
+    UserModule,
+    LayotModule,
+    
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

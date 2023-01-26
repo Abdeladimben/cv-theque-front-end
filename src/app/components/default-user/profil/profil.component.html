@@ -1,0 +1,734 @@
+
+
+
+
+
+<div class="parent">
+<!--     <div class="container">
+        <div class="form-container">
+            <div class="form">
+                <div class="title">
+                    <h1>Information Personnelle</h1>
+                    <button *ngIf="showIcon" class="add" type="button" (click)="openDialog(informationPersonnelle,null,'update','informationPersonnelle')">
+                        <mat-icon>update</mat-icon>
+                    </button>
+                </div>
+                <div class="twoColumns">
+                    <div class="flex">
+                        <div class="flex-child">
+                            <div class="field">
+                                <label for="nom">Nom</label>
+                                <input disabled type="text" id="nom" name="nom" [(ngModel)]="myCandidat.nom" />
+                            </div>
+                            <div class="field">
+                                <label for="prenom">prenom</label>
+                                <input disabled type="text" id="prenom" name="prenom" [(ngModel)]="myCandidat.prenom" />
+                            </div>
+                            <div class="field">
+                                <label for="telephone">telephone</label>
+                                <input disabled type="text" id="telephone" name="telephone"
+                                    [(ngModel)]="myCandidat.telephone" />
+                            </div>
+                            <div class="field">
+                                <label for="email">email</label>
+                                <input disabled type="text" id="email" name="email" [(ngModel)]="myCandidat.email" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex">
+                        <div class="flex-child">
+                            <div class="field">
+                                <label for="datenaissance">datenaissance</label>
+                                <input disabled type="date" id="datenaissance" name="datenaissance"
+                                    [(ngModel)]="myCandidat.dateNaissance" />
+                            </div>
+                            <div class="field">
+                                <label for="lieunaissance">lieunaissance</label>
+                                <input disabled type="text" id="lieunaissance" name="lieunaissance"
+                                    [(ngModel)]="myCandidat.lieuNaissance" />
+                            </div>
+                            <div class="field">
+                                <label for="nationalite">nationalite</label>
+                                <input disabled type="text" id="nationalite" name="nationalite"
+                                    [(ngModel)]="myCandidat.nationalite" />
+                            </div>
+                            <div class="field">
+                                <label for="adresse">adresse</label>
+                                <input disabled type="text" id="adresse" name="adresse"
+                                    [(ngModel)]="myCandidat.adresse" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex" *ngIf="myCandidat.description">
+                        <div class="flex-child" >
+                            <div class="field">
+                                <label for="nom">Description</label>
+                                <textarea disabled type="text" id="description" name="description" rows="13" cols="40" [(ngModel)]="myCandidat.description" ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form">
+                <div class="title">
+                    <h1>Formation</h1>
+                    <button *ngIf="showIcon" class="add" type="button" (click)="openDialog(formation,null,null)">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <div class="margin">
+                    <div class="info" *ngFor="let form of myCandidat.formations; let i= index">
+                        <div class="flex">
+                            <div class="controle-card">
+                                <button *ngIf="showIcon" class="update" type="button" (click)="openDialog(formation,form,'update','formation',i)">
+                                    <mat-icon>update</mat-icon>
+                                </button>
+                                <button *ngIf="showIcon" class="delete" type="button" (click)="delete('formation',form.uuid)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </div>
+                            <div class="flex-child">
+                                <div class="field">
+                                    <label for="diplome">diplome</label>
+                                    <input disabled type="text" id="diplome" name="diplome"
+                                        [(ngModel)]="form.diplome" />
+                                </div>
+                                <div class="field">
+                                    <label for="institut">institut</label>
+                                    <input disabled type="text" id="institut" name="institut"
+                                        [(ngModel)]="form.institut" />
+                                </div>
+                                <div class="field">
+                                    <label for="dateDebut">date Debut</label>
+                                    <input disabled type="date" id="dateDebut" name="dateDebut"
+                                        [(ngModel)]="form.dateDebut" />
+                                </div>
+                                <div class="field">
+                                    <label for="dateFin">date Fin</label>
+                                    <input disabled type="date" id="dateFin" name="dateFin"
+                                        [(ngModel)]="form.dateFin" />
+                                </div>
+                                <div class="field">
+                                    <label for="niveau">niveau</label>
+                                    <input disabled type="text" id="niveau" name="niveau"
+                                        [(ngModel)]="form.niveau" />
+                                </div>
+                                <div class="field">
+                                    <label for="mention">mention</label>
+                                    <input disabled type="text" id="mention" name="mention"
+                                        [(ngModel)]="form.mention" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form">
+                <div class="title">
+                    <h1>Expérience</h1>
+                    <button *ngIf="showIcon" class="add" type="button" (click)="openDialog(experience,null,null)">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <div class="margin">
+                    <div class="info" *ngFor="let exp of myCandidat.experiences; let i= index">
+                        <div class="flex">
+                            <div class="controle-card">
+                                <button *ngIf="showIcon" class="update" type="button" (click)="openDialog(experience,exp,'update','experience',i)">
+                                    <mat-icon>update</mat-icon>
+                                </button>
+                                <button *ngIf="showIcon" class="delete" type="button" (click)="delete('experience',exp.uuid)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </div>
+                            <div class="flex-child">
+                                <div class="field">
+                                    <label for="role">role</label>
+                                    <input disabled type="text" id="role" name="role" [(ngModel)]="exp.role" />
+                                </div>
+                                <div class="field">
+                                    <label for="dateDebut">date debut</label>
+                                    <input disabled type="date" id="dateDebut" name="dateDebut"
+                                        [(ngModel)]="exp.dateDebut" />
+                                </div>
+                                <div class="field">
+                                    <label for="dateFin">date fin</label>
+                                    <input disabled type="date" id="dateFin" name="dateFin" [(ngModel)]="exp.dateFin" />
+                                </div>
+                                <div class="field">
+                                    <label for="entreprise">entreprise</label>
+                                    <input disabled type="text" id="entreprise" name="entreprise"
+                                        [(ngModel)]="exp.entreprise" />
+                                </div>
+                                <div class="field">
+                                    <label for="exp_description">description</label>
+                                    <input disabled type="text" id="exp_description" name="exp_description"
+                                        [(ngModel)]="exp.description" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form">
+                <div class="title">
+                    <h1>Compétences</h1>
+                    <button *ngIf="showIcon" class="add" type="button" (click)="openDialog(competence)">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <div class="margin">
+                    <div *ngFor="let spec of myCandidat.specialites; let i= index">
+                        <div class="flex">
+                            <div class="controle-card">
+                                <button *ngIf="showIcon" class="update" type="button" (click)="openDialog(competence,spec,'update','specialite',i)">
+                                    <mat-icon>update</mat-icon>
+                                </button>
+                                <button *ngIf="showIcon" class="delete" type="button" (click)="delete('specialite',spec.uuid)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </div>
+                            <div class="flex-child">
+                                <input disabled type="text" id="specialite" name="specialite"
+                                    [(ngModel)]="spec.intitule" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form">
+                <div class="title">
+                    <h1>Langue</h1>
+                    <button *ngIf="showIcon" class="add" type="button" (click)="openDialog(langue)">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <div class="margin">
+                    <div *ngFor="let lang of myCandidat.langues;let i= index">
+                        <div class="flex">
+                            <div class="controle-card">
+                                <button *ngIf="showIcon" class="update" type="button" (click)="openDialog(langue,lang,'update','langue',i)">
+                                    <mat-icon>update</mat-icon>
+                                </button>
+                                <button *ngIf="showIcon" class="delete" type="button" (click)="delete('langue',lang.uuid)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </div>
+                            <div class="flex-child">
+                                <div class="field">
+                                    <label for="nom">Langue</label>
+                                    <input disabled type="text" id="nom" name="nom" [(ngModel)]="lang.nom" />
+                                </div>
+                                <div class="field">
+                                    <label for="niveau">niveau</label>
+                                    <input disabled type="text" id="niveau" name="niveau"
+                                        [(ngModel)]="lang.niveau" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form">
+                <div class="title">
+                    <h1>Centre interet</h1>
+                    <button *ngIf="showIcon" class="add" type="button" (click)="openDialog(centreInteret)">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <div class="margin">
+                    <div *ngFor="let centre of myCandidat.centreInterets; let i= index">
+                        <div class="flex">
+                            <div class="controle-card">
+                                <button *ngIf="showIcon" class="update" type="button" (click)="openDialog(centreInteret,centre,'update','centre',i)">
+                                    <mat-icon>update</mat-icon>
+                                </button>
+                                <button *ngIf="showIcon" class="delete" type="button" (click)="delete('centre',centre.uuid)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </div>
+                            <div class="flex-child">
+                                <input disabled type="text" id="centreinteret " name="centreinteret"
+                                    [(ngModel)]="centre.intitule" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div> -->
+
+    <div class="container">
+        <div class="container-padding">
+            <div *ngIf="showIcon" class="menu">
+                <button mat-icon-button [matMenuTriggerFor]="menu2"><i class='bx bx-menu-alt-right'></i></button>
+                <mat-menu #menu2="matMenu">
+                    <button mat-menu-item [disabled]="!myCandidat.checkCV" (click)="telechargerCV()" type="button">Télécharger CV</button>
+                    <button mat-menu-item [disabled]="!myCandidat.checkLettre" (click)="telechargerLettre()" type="button">Télécharger Lettre de motivation</button>
+                </mat-menu>
+            </div>
+            
+            <section class="information">
+                <header class="title">
+                    <h1 class="name">{{myCandidat.nom.toUpperCase() +" "+ myCandidat.prenom.toUpperCase()}}</h1>
+                    <button mat-icon-button *ngIf="showIcon" type="button" (click)="openDialog(informationPersonnelle,null,'update','informationPersonnelle',null)">
+                        <i class='bx bx-edit-alt'></i>
+                    </button>
+                </header>
+                <div class="info">
+                    <div class="intitule">
+                        <h2>{{myCandidat.intitule.toUpperCase()}}</h2>
+                    </div>
+                    
+                    <p class="label">{{myCandidat.adresse.toUpperCase()}}</p>
+                    <p class="label">{{myCandidat.email}}</p>
+                    <p class="label">{{myCandidat.telephone}}</p>
+                    <p class="label">{{myCandidat.dateNaissance}}</p>
+                </div>
+                <div class="propos">
+                    <h3>Á propos</h3>
+                    <p>{{myCandidat.description}}</p>
+                </div>
+            </section>
+            <section class="part">
+                <div class="sous-title">
+                    <h3>Expérience professionnelle</h3>
+                    <button *ngIf="showIcon" mat-icon-button type="button" (click)="openDialog(experience)">
+                        <i class='bx bx-plus'></i>
+                    </button>
+                </div>
+                <div class="loop" *ngFor="let exp of myCandidat.experiences; let i= index">
+                    <div class="intitule">
+                        <h4>{{exp.role}}</h4>
+                        <div class="icons">
+                            <button *ngIf="showIcon" mat-icon-button type="button" (click)="openDialog(experience,exp,'update','experience',i)">
+                                <i class='bx bx-edit-alt'></i>
+                            </button>
+                            <button *ngIf="showIcon" mat-icon-button type="button" (click)="delete('experience',exp.uuid)">
+                                <i class='bx bxs-trash'></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="label">{{exp.entreprise}}</p>
+                    <p class="label">{{exp.dateDebut + " á "+ exp.dateFin}}</p>
+                    <p class="label description">{{exp.description}}</p>
+                </div>
+            </section>
+            <section class="part">
+                <div class="sous-title">
+                    <h3>Formation</h3>
+                    <button *ngIf="showIcon" mat-icon-button type="button" (click)="openDialog(formation)">
+                        <i class='bx bx-plus'></i>
+                    </button>
+                </div>
+                <div class="loop" *ngFor="let form of myCandidat.formations; let i= index">
+                    <div class="intitule">
+                        <h4>{{form.niveau + ", " + form.diplome}}</h4>
+                        <div class="icons">
+                            <button *ngIf="showIcon" mat-icon-button type="button" (click)="openDialog(formation,form,'update','formation',i)">
+                                <i class='bx bx-edit-alt'></i>
+                            </button>
+                            <button *ngIf="showIcon" mat-icon-button type="button" (click)="delete('formation',form.uuid)">
+                                <i class='bx bxs-trash'></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="label">{{form.institut}}</p>
+                    <p class="label">{{form.dateDebut + " á "+ form.dateFin}}</p>
+                </div>
+            </section>
+            <section class="part">
+                <div class="sous-title">
+                    <h3>Compétence</h3>
+                    <button *ngIf="showIcon" mat-icon-button type="button" (click)="openDialog(competence)">
+                        <i class='bx bx-plus'></i>
+                    </button>
+                </div>
+                <div class="loop" *ngFor="let spec of myCandidat.specialites; let i= index">
+                    <div class="intitule">
+                        <h4>{{spec.intitule}}</h4>
+                        <div class="icons">
+                            <button *ngIf="showIcon" mat-icon-button type="button" (click)="openDialog(competence,spec,'update','specialite',i)">
+                                <i class='bx bx-edit-alt'></i>
+                            </button>
+                            <button *ngIf="showIcon" mat-icon-button type="button" (click)="delete('specialite',spec.uuid)">
+                                <i class='bx bxs-trash'></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="part">
+                <div class="sous-title">
+                    <h3>Langue</h3>
+                    <button *ngIf="showIcon" mat-icon-button type="button" (click)="openDialog(langue)">
+                        <i class='bx bx-plus'></i>
+                    </button>
+                </div>
+                <div class="loop" *ngFor="let lang of myCandidat.langues; let i= index">
+                    <div class="intitule">
+                        <h4>{{lang.nom}} - <span>{{lang.niveau}}</span></h4>
+                        <div class="icons">
+                            <button *ngIf="showIcon" mat-icon-button type="button" (click)="openDialog(langue,lang,'update','langue',i)">
+                                <i class='bx bx-edit-alt'></i>
+                            </button>
+                            <button *ngIf="showIcon" mat-icon-button type="button" (click)="delete('langue',lang.uuid)">
+                                <i class='bx bxs-trash'></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="part">
+                <div class="sous-title">
+                    <h3>Centre interet</h3>
+                    <button *ngIf="showIcon" mat-icon-button type="button" (click)="openDialog(centreInteret)">
+                        <i class='bx bx-plus'></i>
+                    </button>
+                </div>
+                <div class="loop" *ngFor="let centre of myCandidat.centreInterets; let i= index">
+                    <div class="intitule">
+                        <h4>{{centre.intitule}}</h4>
+                        <div class="icons">
+                            <button *ngIf="showIcon" mat-icon-button type="button" (click)="openDialog(centreInteret,centre,'update','centre',i)">
+                                <i class='bx bx-edit-alt'></i>
+                            </button>
+                            <button *ngIf="showIcon" mat-icon-button type="button" (click)="delete('centre',centre.uuid)">
+                                <i class='bx bxs-trash'></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <div *ngIf="showIcon" class="control">
+
+            <div class="control_right">
+                <button mat-raised-button color="primary" 
+                [disabled]="!checkEnregistrer"
+                (click)="enregistrer()">
+                    Enregistrer
+                </button>
+                <button mat-raised-button color="warn"
+                (click)="reset()">
+                    Reset
+                </button>
+            </div>
+            
+        </div>
+    </div>
+
+</div>
+
+<ng-template #informationPersonnelle>
+
+    <h2>Update Information Presonnelle</h2>
+    <mat-dialog-content [formGroup]="informationPersonnelleForm">
+        <div class="field">
+            <mat-form-field appearance="fill">
+                <mat-label>Nom</mat-label>
+                <input matInput formControlName="nom" />
+                <app-error-form [control]="informationPersonnelleForm.controls['nom']"></app-error-form>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Prenom</mat-label>
+                <input matInput formControlName="prenom" />
+                <app-error-form [control]="informationPersonnelleForm.controls['prenom']"></app-error-form>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" />
+                <app-error-form [control]="informationPersonnelleForm.controls['email']"></app-error-form>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Date Naissance</mat-label>
+                <input matInput [matDatepicker]="pickerDateDebut" formControlName="dateNaissance" />
+                <mat-datepicker-toggle matSuffix [for]="pickerDateDebut"></mat-datepicker-toggle>
+                <mat-datepicker #pickerDateDebut></mat-datepicker>
+                <app-error-form [control]="informationPersonnelleForm.controls['dateNaissance']"></app-error-form>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Lieu Naissance</mat-label>
+                <input matInput formControlName="lieuNaissance" />
+                <app-error-form [control]="informationPersonnelleForm.controls['lieuNaissance']"></app-error-form>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Nationalite</mat-label>
+                <input matInput formControlName="nationalite" />
+                <app-error-form [control]="informationPersonnelleForm.controls['nationalite']"></app-error-form>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Adresse</mat-label>
+                <input matInput formControlName="adresse" />
+                <app-error-form [control]="informationPersonnelleForm.controls['adresse']"></app-error-form>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="description" />
+                <app-error-form [control]="informationPersonnelleForm.controls['description']"></app-error-form>
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button color="primary"
+        [disabled]="informationPersonnelleForm.invalid"
+        (click)="update('information personnelle')"
+        >
+            Update
+        </button>
+        <button mat-raised-button 
+        mat-dialog-close
+        >
+            Cancel
+        </button>
+    </mat-dialog-actions>
+
+</ng-template>
+
+<ng-template #formation>
+    <h2>{{dialogTitle}} formation</h2>
+    <mat-dialog-content [formGroup]="formationForm">
+            <div class="field">
+                <mat-form-field appearance="fill">
+                    <mat-label>diplome</mat-label>
+                    <input matInput formControlName="diplome" />
+                    <app-error-form [control]="formationForm.controls['diplome']"></app-error-form>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>institut</mat-label>
+                    <input matInput formControlName="institut" />
+                    <app-error-form [control]="formationForm.controls['institut']"></app-error-form>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>date Debut</mat-label>
+                    <input matInput [matDatepicker]="pickerDateDebut" formControlName="dateDebut" />
+                    <mat-datepicker-toggle matSuffix [for]="pickerDateDebut"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerDateDebut></mat-datepicker>
+                    <app-error-form [control]="formationForm.controls['dateDebut']"></app-error-form>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>date Fin</mat-label>
+                    <input matInput [matDatepicker]="pickerDateFin" formControlName="dateFin" />
+                    <mat-datepicker-toggle matSuffix [for]="pickerDateFin"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerDateFin></mat-datepicker>
+                    <app-error-form [control]="formationForm.controls['dateFin']"></app-error-form>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>niveau</mat-label>
+                    <input matInput formControlName="niveau" />
+                    <app-error-form [control]="formationForm.controls['niveau']"></app-error-form>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>mention</mat-label>
+                    <input matInput formControlName="mention" />
+                    <app-error-form [control]="formationForm.controls['mention']"></app-error-form>
+                </mat-form-field>
+            </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button color="primary"
+        *ngIf="showAddButton"
+        [disabled]="formationForm.invalid"
+        (click)="ajouter('formation')"
+        >
+            Ajouter
+        </button>
+        <button mat-raised-button color="primary"
+        *ngIf="showUpdateButton"
+        [disabled]="formationForm.invalid"
+        (click)="update('formation')"
+        >
+            Update
+        </button>
+        <button mat-raised-button 
+        mat-dialog-close
+        >
+            Cancel
+        </button>
+    </mat-dialog-actions>
+</ng-template>
+
+<ng-template #experience>
+
+    <h2>{{dialogTitle}} expérience</h2>
+    <mat-dialog-content [formGroup]="experienceForm">
+        <div class="field">
+            <mat-form-field appearance="fill">
+                <mat-label>Role</mat-label>
+                <input matInput formControlName="role" />
+                <app-error-form [control]="experienceForm.controls['role']"></app-error-form>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>date Debut</mat-label>
+                <input matInput [matDatepicker]="pickerExperienceDateDebut" formControlName="dateDebut" />
+                <mat-datepicker-toggle matSuffix [for]="pickerExperienceDateDebut"></mat-datepicker-toggle>
+                <mat-datepicker #pickerExperienceDateDebut></mat-datepicker>
+                <app-error-form [control]="experienceForm.controls['dateDebut']"></app-error-form>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>date Fin</mat-label>
+                <input matInput [matDatepicker]="pickerExperienceDateFin" formControlName="dateFin" />
+                <mat-datepicker-toggle matSuffix [for]="pickerExperienceDateFin"></mat-datepicker-toggle>
+                <mat-datepicker #pickerExperienceDateFin></mat-datepicker>
+                <app-error-form [control]="experienceForm.controls['dateFin']"></app-error-form>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Entreprise</mat-label>
+                <input matInput formControlName="entreprise" />
+                <app-error-form [control]="experienceForm.controls['entreprise']"></app-error-form>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="description"/>
+                <app-error-form [control]="experienceForm.controls['description']"></app-error-form>
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button color="primary"
+        *ngIf="showAddButton"
+        [disabled]="experienceForm.invalid"
+        (click)="ajouter('experience')"
+        >
+            Ajouter
+        </button>
+        <button mat-raised-button color="primary"
+        *ngIf="showUpdateButton"
+        [disabled]="experienceForm.invalid"
+        (click)="update('experience')"
+        >
+            Update
+        </button>
+        <button mat-raised-button 
+        mat-dialog-close
+        >
+            Cancel
+        </button>
+    </mat-dialog-actions>
+</ng-template>
+
+<ng-template #competence>
+    <h2>{{dialogTitle}} Compétence</h2>
+    <mat-dialog-content [formGroup]="specialiteForm">
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Compétence</mat-label>
+                <input matInput formControlName="specialite" />
+                <app-error-form [control]="specialiteForm.controls['specialite']"></app-error-form>
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button color="primary"
+        *ngIf="showAddButton"
+        [disabled]="specialiteForm.invalid"
+        (click)="ajouter('specialite')"
+        >
+            Ajouter
+        </button>
+        <button mat-raised-button color="primary"
+        *ngIf="showUpdateButton"
+        [disabled]="specialiteForm.invalid"
+        (click)="update('specialite')"
+        >
+            Update
+        </button>
+        <button mat-raised-button 
+        mat-dialog-close
+        >
+            Cancel
+        </button>
+    </mat-dialog-actions>
+</ng-template>
+
+<ng-template #langue>
+
+    <h2>{{dialogTitle}} Langue</h2>
+    <mat-dialog-content [formGroup]="langueForm">
+        <div class="field">
+            <mat-form-field appearance="fill">
+                <mat-label>Langue</mat-label>
+                <mat-select formControlName="nom">
+                    <mat-option *ngFor="let langue of selectLangues" [value]="langue">
+                        {{ langue }}
+                    </mat-option>
+                </mat-select>
+                <app-error-form [control]="langueForm.controls['nom']"></app-error-form>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Niveau</mat-label>
+                <mat-select formControlName="niveau">
+                    <mat-option *ngFor="let niveau of selectLangueNiveau" [value]="niveau">
+                        {{ niveau }}
+                    </mat-option>
+                </mat-select>
+                <app-error-form [control]="langueForm.controls['niveau']"></app-error-form>
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button color="primary"
+        *ngIf="showAddButton"
+        [disabled]="langueForm.invalid"
+        (click)="ajouter('langue')"
+        >
+            Ajouter
+        </button>
+        <button mat-raised-button color="primary"
+        *ngIf="showUpdateButton"
+        [disabled]="langueForm.invalid"
+        (click)="update('langue')"
+        >
+            Update
+        </button>
+        <button mat-raised-button 
+        mat-dialog-close
+        >
+            Cancel
+        </button>
+    </mat-dialog-actions>
+</ng-template>
+
+<ng-template #centreInteret>
+    <h2>{{dialogTitle}} Centre Interet</h2>
+    <mat-dialog-content [formGroup]="centreInteretForm">
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Centre Interet</mat-label>
+                <input matInput formControlName="centreInteret" />
+                <app-error-form [control]="centreInteretForm.controls['centreInteret']"></app-error-form>
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button color="primary"
+        *ngIf="showAddButton"
+        [disabled]="centreInteretForm.invalid"
+        (click)="ajouter('centre')"
+        >
+            Ajouter
+        </button>
+        <button mat-raised-button color="primary"
+        *ngIf="showUpdateButton"
+        [disabled]="centreInteretForm.invalid"
+        (click)="update('centre')"
+        >
+            Update
+        </button>
+        <button mat-raised-button 
+        mat-dialog-close
+        >
+            Cancel
+        </button>
+    </mat-dialog-actions>
+</ng-template>

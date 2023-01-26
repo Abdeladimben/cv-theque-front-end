@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Candidat } from '../interfaces/candidat';
 
 @Injectable({
@@ -7,26 +8,37 @@ import { Candidat } from '../interfaces/candidat';
 })
 export class CandidatService {
 
-  apiURL: string = 'http://localhost:3000/candidats'
 
   myCandidat:Candidat={
-    IDCANDIDAT:'',
-    NOM:'',
-    PRENOM:'',
-    DATENAISSANCE:'',
-    LIEUNAISSANCE:'',
-    NATIONALITE:'',
-    ADRESSE:'',
-    TELEPHONE:'',
-    EMAIL:''
+    uuid: '',
+    nom: '',
+    prenom: '',
+    dateNaissance: '',
+    lieuNaissance: '',
+    nationalite: '',
+    adresse: '',
+    email: '',
+    telephone: '',
+    description: '',
+
+    centreInterets: [],
+    experiences: [],
+    formations: [],
+    langues: [],
+    specialites: [],
+    intitule: ''
   }
 
-  constructor(private http:HttpClient) { }
+
+  apiURL: string=environment.url+"/candidat";
+  constructor(private http:HttpClient) {
+
+  }
 
   createNewCandidat(candidatP:Candidat){
     return new Promise((resolve, reject) =>
       {
-        this.http.post<Candidat>(this.apiURL,candidatP)
+        this.http.post<Candidat>(this.apiURL+"/create",candidatP)
         .subscribe
         (
           res =>{
@@ -55,10 +67,10 @@ export class CandidatService {
     )
   }
 
-  getCandidat(CANDIDAT:Candidat){
+  getCandidat(uuid:string){
     return new Promise((resolve,reject) =>
       {
-        this.http.get(this.apiURL+"/"+CANDIDAT.IDCANDIDAT)
+        this.http.get(this.apiURL+"/"+uuid)
         .subscribe(
           res=>{
             resolve(res);
@@ -86,12 +98,10 @@ export class CandidatService {
       }
     )
   }
-
-
-  getCandidatWithEmail(email:string){
+  getCandidatByAccountToken(){
     return new Promise((resolve,reject) =>
       {
-        this.http.get(this.apiURL+"/EMAIL/"+email)
+        this.http.get(this.apiURL+"/account")
         .subscribe(
           res=>{
             resolve(res);
@@ -104,10 +114,13 @@ export class CandidatService {
     )
   }
 
-
   updateCandidat(candidatP: Candidat){
     return new Promise((resolve, reject) => {
-        this.http.put(this.apiURL+"/"+candidatP.IDCANDIDAT,candidatP).subscribe(
+      let headers=new HttpHeaders();
+      let params=new HttpParams();
+      headers.set("Content-Type","");
+      headers.set("Accept","multipart/form-data");
+        this.http.put(this.apiURL+"/update",candidatP,{params,headers}).subscribe(
             (res) => {
                 resolve(res);
             },
@@ -119,9 +132,9 @@ export class CandidatService {
   }
 
 
-  deleteCandidat(idcandidatP:string){
+  deleteCandidat(uuid:string){
     return new Promise((resolve, reject) =>{
-      this.http.delete(this.apiURL+"/"+idcandidatP)
+      this.http.delete(this.apiURL+"/delete/"+uuid)
       .subscribe(
         res =>{
           resolve(res);

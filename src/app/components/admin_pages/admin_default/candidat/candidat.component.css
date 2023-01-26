@@ -1,0 +1,240 @@
+.parent{
+    margin-top:20px;
+
+}
+.profil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+.search{
+    width: 98%;
+}
+
+.mat-radio-group{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 20px;
+    
+}
+
+.search div{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    grid-gap: 15px;
+}
+
+.search input{
+    width:100%;
+    height:30px;
+    padding-left: 10px;
+    border:none;
+    border-bottom: none;
+    border-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-sizing: border-box;
+    background-color:#92c9d45e;
+    margin-top: 5px;
+}
+
+.mat-elevation-z8{
+    width: 90%;
+}
+
+.mat-elevation-z8 table{
+    width: 100%;
+}
+.tablecontainer{
+    display:flex;
+    justify-content:center;
+}
+th,td{
+    text-align: center;
+}
+
+.container{
+    margin-top:20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navigate{
+    width:fit-content;
+    padding:10px 30px;
+    background-color:#ed3d2b;
+    color:#fff;
+    float:right;
+    position:sticky;
+    top:80px;
+    cursor:pointer;
+}
+
+.container .form-container{
+    display: flex;
+    flex-direction: column;
+    width:90%;
+    background-color: #f1f1f1;
+
+}
+
+
+.twoColumns{
+    display: grid;
+    margin:20px 0;
+}
+input{
+    width: 300px;
+    height: 25px;
+    font-size: 15px;
+    text-align: start;
+    padding-left: 10px;
+}
+
+
+.title{
+    background-color:#7777fa;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title h1{
+    margin-left: 20px;
+    margin-bottom:0;
+}
+mat-icon{
+    color: #7777fa;
+}
+.add{
+    background-color:#fff;
+    border:none;
+    height:25px;
+    width:25px;
+    border-radius:50%;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+
+.flex-child{
+    display:flex;
+    gap:50px;
+}
+.flex{
+    margin-left: 40px;
+}
+.flex{
+    display:flex;
+    flex-direction: column;
+    background-color: #fff;
+    margin:0 40px 20px;
+    padding:20px;
+    border-radius:15px;
+
+}
+
+h2{
+    margin:16px 0 16px 60px;
+}
+
+.labels{
+    display:grid;
+}
+.inputs{
+    display:grid;
+}
+.labels,.inputs{
+    gap:3px;
+}
+.margin{
+    margin:20px 0;
+}
+
+
+.mat-header-cell{
+    text-align: center;
+}
+
+.controle{
+    display: flex;
+    gap:10px;
+    height: inherit;
+    align-items: center;
+    justify-content: center;
+}
+.controle button{
+    height: 35px;
+}
+
+    
+mat-dialog-content{
+    display: flex;
+    gap:15px;
+}
+
+
+
+@media (max-width: 1024px) {  
+    .twoColumns{
+        grid-template-columns: auto;
+    }
+
+}
+/* Landscape phone to portrait tablet */
+@media (max-width: 936px) {
+    .MainTitle{
+        justify-content: start;
+        padding: 0 calc(50% - 150px);
+    }
+
+}
+
+@media (max-width: 768px) {
+    .parent{
+        display:grid;
+    }
+    .navigate{
+        background-color: #ed3d2ba1;
+        color: #000;
+        position:sticky;
+        top:61px;
+        padding-left:20px;
+        margin-left:20px;
+    }
+    .navigate::after{
+        content:'';
+        position: absolute;
+        left:-20px;
+        top:0;
+        width: 0;
+        height: 0;
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent; 
+        border-right:20px solid #ed3d2ba1;
+        clear: both;
+    }
+    .navigate:hover{
+        background-color: #ed3d2b;
+    }
+
+  
+}
+
+@media (max-width: 480px) {
+    .flex{
+        margin:0 0 20px 0px;
+        padding-right:0;
+    }
+    .addinput{
+        margin-left: 20px;
+    }
+    .addinput >div,.flex-child{
+        display:flex;
+        gap:10px;
+    }
+    .labels,.inputs{
+        gap:10px;
+    }
+}

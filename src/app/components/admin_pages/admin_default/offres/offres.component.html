@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="margin-container">
+    <div *ngIf="offres?.length==0">aucune offre est publié</div>
+    <div class="nbr">
+      <mat-card>Total Offre : {{offres?.length}}</mat-card>
+      <mat-card>Total Candidat : {{nombreCandidat}}</mat-card>
+    </div>
+    <div class="offres">
+      <mat-card class="example-card" *ngFor="let offre of offres">
+          <div>
+            <mat-card-title>{{offre.poste}}</mat-card-title>
+            <mat-card-subtitle>{{offre.lieu}} / {{offre.type}} / {{offre.dateOffre}}</mat-card-subtitle>
+          </div>
+          <mat-card-content>
+            <p class="description">{{offre.description}}</p>
+            <p><span>Compétence :</span> {{offre.competences?.toUpperCase()}}</p>
+            <p><span>Contrat :</span> {{offre.contrat?.toUpperCase()}}</p>
+            <p><span>Durée :</span> {{offre.dureeContrat?.toUpperCase()}}</p>
+            <p><span>Salaire :</span> {{offre.salaire?.toUpperCase()}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button class="warn_hover" *ngIf="type=='ROLE_ADMIN'" mat-raised-button (click)="supprimer(offre.uuid)" color="warn">SUPPRIMER</button>
+            <button [class]="offre.nombreCandidat!=0?'primary_hover':''" *ngIf="type=='ROLE_ADMIN'" mat-raised-button [disabled]="offre.nombreCandidat==0" (click)="goToCandidats(offre.uuid)" color="primary">CANDIDATS : {{offre.nombreCandidat}}</button>
+          </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+    
+</div>

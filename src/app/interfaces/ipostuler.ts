@@ -1,5 +1,9 @@
+import { Candidat } from "./candidat";
+import { Offre } from "./offre";
+
 export interface Ipostuler {
-    IDOFFRE:string,
-    IDCANDIDAT:string,
+    uuid:string;
+    offre:Offre,
+    candidat:Candidat,
     DATEPOSTULER:Date
 }

@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="Title">
+        <button mat-icon-button *ngIf="user?.type=='ROLE_ADMIN'" (click)="toggleSideBar()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <h1>MERCURE IT</h1>
+        
+    </div>
+    <div class="account" *ngIf="user!=undefined || user!=null">
+        <button mat-raised-button *ngIf="user?.type=='ROLE_USER'" color="primary" style="color:white;" (click)="openDialog(inputFileLettre)">Lettre de Motivation</button>
+        <button mat-raised-button *ngIf="user?.type=='ROLE_USER'" color="primary" style="color:white;width: 125px;" (click)="openDialog(inputFileCV)">CV</button>
+        <button mat-icon-button [matMenuTriggerFor]="menu"> <mat-icon>account_circle</mat-icon> </button>
+            <mat-menu #menu="matMenu">
+                <button (click)="logout()" mat-menu-item>Déconnection</button>
+                <button *ngIf="user?.type=='ROLE_USER'" routerLink="offres" mat-menu-item>OFFRE</button>
+                <button *ngIf="user?.type=='ROLE_USER'" routerLink="profil" mat-menu-item>PROFIL</button>
+            </mat-menu>
+    </div>
+</div>
+<mat-divider class="material-devider"></mat-divider>
+
+
+<ng-template #inputFileCV>
+        <h2 mat-dialog-title>CV</h2>
+        <mat-dialog-content class="mat-typography">
+            <input type="file" class="image-input" #removableInput placeholder="choisir image" (change)="onFileSelected($event)" accept=".pdf"/>
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+            <button mat-button mat-dialog-close>Cancel</button>
+            <button mat-button 
+                    [mat-dialog-close]="true" 
+                    (click)="uploadCV()"
+                    [disabled]="selectedFile==null"
+                    >UPLOAD
+            </button>
+        </mat-dialog-actions>
+</ng-template>
+
+
+<ng-template #inputFileLettre>
+    <h2 mat-dialog-title>Lettre de Motivation</h2>
+    <mat-dialog-content class="mat-typography">
+        <input type="file" class="image-input" #removableInput placeholder="choisir image" (change)="onFileSelected($event)" accept=".pdf"/>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button 
+                [mat-dialog-close]="true" 
+                (click)="uploadLettre()"
+                [disabled]="selectedFile==null"
+                >UPLOAD
+        </button>
+    </mat-dialog-actions>
+</ng-template>

@@ -1,7 +1,7 @@
 export interface User {
-
-    EMAIL:string;
-    PASSWORD:string;
-    TYPE:string;
+    uuid?:string;
+    email?:string;
+    password?:string;
+    type?:any;
 
 }

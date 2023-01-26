@@ -1,7 +1,6 @@
 export interface CentreInteret {
 
-    IDCENTREINTERET:string;
-    INTITULE:string;
-    IDCANDIDAT:string;
+    uuid:string;
+    intitule:string;
 
 }

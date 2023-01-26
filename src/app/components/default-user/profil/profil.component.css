@@ -1,0 +1,293 @@
+/*.container{
+    margin-top:20px;
+    display: flex;
+    justify-content: center;
+}
+
+.container .form-container{
+    display: flex;
+    flex-direction: column;
+    width:90%;
+    background-color: #f1f1f1;
+
+}
+
+
+.twoColumns{
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    justify-content: center;
+    margin:20px 0;
+}
+input{
+    width: 300px;
+    height: 25px;
+    font-size: 15px;
+    text-align: start;
+    padding-left: 10px;
+}
+
+mat-form-field{
+    width: 300px;
+}
+
+.title{
+    background-color:#2a3ce5;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title h1{
+    margin-left: 20px;
+    margin-bottom:0;
+    color:#fff;
+}
+mat-icon{
+    color: #2a3ce5;
+}
+.add{
+    background-color:#fff;
+    border:none;
+    height:25px;
+    width:25px;
+    border-radius:50%;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+
+.addinput >div,.flex-child{
+    display:flex;
+    flex-direction: column;
+    gap:15px;
+}
+*/
+.field{
+    display: flex;
+    flex-direction: column;
+}
+
+.addinput,.flex{
+    display:flex;
+    flex-direction: column;
+    background-color: #fff;
+    margin:0 40px 20px;
+    padding:20px;
+    border-radius:15px;
+
+}
+
+h2{
+    margin:16px 0 16px 60px;
+}
+.buttonAjouter{
+    width:70px;
+    height:25px;
+    cursor:pointer;
+    border:none;
+    border-radius:10px;
+    background-color: #00ff007d;
+}
+.buttonAjouter:hover:enabled{
+    background-color: #00ff00;
+}
+
+.labels{
+    display:grid;
+}
+.inputs{
+    display:grid;
+}
+.labels,.inputs{
+    gap:10px;
+}
+.margin{
+    margin:20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    justify-content: start;
+}
+
+
+.container{
+    min-width: 800px;
+    margin: 10px 25rem;
+
+}
+.container-padding{
+    background-color: #fff;
+    padding:30px 50px;
+    border: 1px solid #d9d9d9;
+}
+.menu{
+    display: flex;
+    justify-content: flex-end;
+}
+.information .title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.name{
+    font-size: 1.4375rem;
+    line-height: 2.25rem;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+i{
+    color: #085ff7;
+    font-size: 1.7rem;
+}
+.mat-icon-button:hover{
+    background-color: #ededed85;
+}
+
+.intitule, .sous-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.intitule h4,.intitule h2{
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    font-size: 16px;
+    margin: auto 0;
+}
+
+.intitule h4 span{
+    font-weight: 300;
+}
+
+.label{
+    margin:0 0 8px;
+}
+.experience .loop .description{
+    margin-top: 15px;
+}
+
+.propos h3,.sous-title h3{
+    color: #6f6f6f;
+    border-bottom: 1px solid #2e76f2;
+    font-size: 20px;
+    letter-spacing: .08em;
+}
+.sous-title h3{
+    border: none;
+}
+.sous-title{
+    border-bottom: 1px solid #2e76f2;
+}
+
+.information .propos p{
+    word-break: break-word;
+}
+
+.control{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 50px;
+
+}
+
+.control_right{
+    display: flex;
+    gap: 15px;
+}
+.control_left{
+    display: flex;
+    gap: 15px;
+}
+.control button{
+    font-size: 17px;
+}
+
+.controle-card{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.controle-card button{
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+mat-icon:hover{
+    color:#2a3ce5;
+}
+
+
+
+
+@media (max-width: 1024px) {  
+    .twoColumns{
+        grid-template-columns: auto;
+    }
+
+}
+/* Landscape phone to portrait tablet */
+@media (max-width: 936px) {
+    .MainTitle{
+        justify-content: start;
+        padding: 0 calc(50% - 150px);
+    }
+
+}
+
+@media (max-width: 768px) {
+    .parent{
+        display:grid;
+    }
+    .navigate{
+        background-color: #ed3d2ba1;
+        color: #000;
+        position:sticky;
+        top:61px;
+        padding-left:20px;
+        margin-left:20px;
+    }
+    .navigate::after{
+        content:'';
+        position: absolute;
+        left:-20px;
+        top:0;
+        width: 0;
+        height: 0;
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent; 
+        border-right:20px solid #ed3d2ba1;
+        clear: both;
+    }
+    .navigate:hover{
+        background-color: #fb5948;
+    }
+  
+}
+
+@media (max-width: 480px) {
+    .flex{
+        margin:0 0 20px 0px;
+        padding-right:0;
+    }
+    .addinput{
+        margin-left: 20px;
+    }
+    .addinput >div,.flex-child{
+        display:flex;
+        gap:10px;
+    }
+    .labels,.inputs{
+        gap:10px;
+    }
+}
+
+@media (max-width: 320px) {  
+
+}
+
+
+

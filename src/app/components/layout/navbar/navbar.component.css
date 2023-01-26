@@ -1,0 +1,53 @@
+
+#menuToggle{
+    position:relative;
+    top:50px;
+    left:50px;
+}
+nav{
+    
+    height: calc(100vh - 81px);
+    padding-top:20px;
+        
+}
+.menu{
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    display:none;
+}
+ul{
+    position:sticky;
+    top:80px;
+}
+li{
+    padding:20px 30px;
+    list-style :none;
+    position: relative;
+    color:#000;
+    border-bottom:1px solid #00000030;
+    cursor: pointer;
+}
+li:hover{
+    padding-left:30px;
+    background-color: rgb(245, 245, 245);
+    position: relative;
+    border:none;
+    color:#0f1a34;
+}
+li:hover::before{
+    content:'';
+    width:30px;
+    height:60px;
+    border-radius:60px 0 0 60px;
+    background-color:#fff;
+    position: absolute;
+    bottom:0px;
+    left:-30px;
+}
+
+.closebtn {
+    display:none;
+}
+

@@ -1,6 +1,5 @@
 export interface Specialite {
 
-    IDSPECIALITE:string;
-    INTITULE:string;
-    IDCANDIDAT:string;
+    uuid:string;
+    intitule:string;
 }

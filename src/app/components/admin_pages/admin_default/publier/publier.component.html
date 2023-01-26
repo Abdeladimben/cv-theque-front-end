@@ -1,0 +1,64 @@
+<div class="container">
+    <form class="form" [formGroup]="experienceForm">
+        <div class="parent">
+            <div class="one">
+                <mat-form-field appearance="fill">
+                    <mat-label>Type d'offre</mat-label>
+                    <mat-select formControlName="type" autofocus>
+                        <mat-option *ngFor="let type of typeOffre" [value]="type.value">
+                            {{type.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                    <app-error-form [control]="experienceForm.controls['type']"></app-error-form>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Poste</mat-label>
+                    <input matInput formControlName="poste">
+                    <app-error-form [control]="experienceForm.controls['poste']"></app-error-form>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Lieu</mat-label>
+                    <input matInput formControlName="lieu">
+                    <app-error-form [control]="experienceForm.controls['lieu']"></app-error-form>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Salaire</mat-label>
+                    <input matInput formControlName="salaire">
+                    <app-error-form [control]="experienceForm.controls['salaire']"></app-error-form>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Type contrat</mat-label>
+                    <mat-select formControlName="contrat" autofocus>
+                        <mat-option *ngFor="let type of typeContrat" [value]="type.value">
+                            {{type.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                    <app-error-form [control]="experienceForm.controls['contrat']"></app-error-form>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Durée contrat</mat-label>
+                    <input matInput formControlName="dureeContrat">
+                    <app-error-form [control]="experienceForm.controls['dureeContrat']"></app-error-form>
+                </mat-form-field>
+                
+            </div>
+            <div class="two">
+                <mat-form-field class="text-area" appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput formControlName="description"></textarea>
+                    <app-error-form [control]="experienceForm.controls['description']"></app-error-form>
+                </mat-form-field>
+                <mat-form-field class="text-area" appearance="fill">
+                    <mat-label>Compétence</mat-label>
+                    <textarea matInput formControlName="competence"></textarea>
+                    <app-error-form [control]="experienceForm.controls['competence']"></app-error-form>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="divButton">
+            <button [disabled]="experienceForm.invalid" (click)="publier()" mat-raised-button>PUBLIER</button> 
+            <!-- <button type="submit" [disabled]="experienceForm.invalid" mat-raised-button>PUBLIER</button> -->
+        </div>
+
+    </form>
+</div>

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Offre } from 'src/app/interfaces/offre';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,27 +9,27 @@ import { Offre } from 'src/app/interfaces/offre';
 export class OffreService {
 
   myOffre:Offre={
-    IDOFFRE: 0,
-    TYPE: '',
-    POSTE: '',
-    DESCRIPTION: '',
-    COMPETENCES: '',
-    LIEU: '',
-    SALAIRE: '',
-    CONTRAT: '',
-    DUREECONTRAT: '',
-    DATEOFFRE: new Date(),
-    NBRCANDIDAT:0
+    uuid: '',
+    type: '',
+    poste: '',
+    description: '',
+    competences: '',
+    lieu: '',
+    salaire: '',
+    contrat: '',
+    dureeContrat: '',
+    dateOffre: new Date(),
+    nombreCandidat:0
   }
+  apiURL: string=environment.url+"/offre";
 
-  apiURL: string = 'http://localhost:3000/offre'
-
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+  }
 
   createNewOffre(OffreP:Offre){ 
     return new Promise((resolve, reject) => 
       {
-        this.http.post<Offre>(this.apiURL,OffreP)
+        this.http.post<Offre>(this.apiURL+"/create",OffreP)
         .subscribe
         (
           res =>{
@@ -75,7 +76,7 @@ export class OffreService {
 
   updateOffre(OffreP: Offre){
     return new Promise((resolve, reject) => {
-        this.http.put(this.apiURL+"/"+OffreP.IDOFFRE,OffreP).subscribe(
+        this.http.put(this.apiURL+"/"+OffreP.uuid,OffreP).subscribe(
             (res) => {
                 resolve(res);
             },
@@ -86,9 +87,9 @@ export class OffreService {
     })
   }
 
-  deleteOffre(id:any){
+  deleteOffre(uuid:any){
     return new Promise((resolve, reject) =>{
-      this.http.delete(this.apiURL+"/"+id)
+      this.http.delete(this.apiURL+"/delete/"+uuid)
       .subscribe(
         res =>{
           resolve(res);

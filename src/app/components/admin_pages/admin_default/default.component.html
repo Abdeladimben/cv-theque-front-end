@@ -1,0 +1,13 @@
+<app-top-bar (toggleSideBars)="sideBarToggler()"></app-top-bar>
+
+<mat-drawer-container>
+
+    <mat-drawer mode="side" [opened]="SideBarOpen">
+        <app-navbar></app-navbar>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
+
+<app-footer></app-footer>

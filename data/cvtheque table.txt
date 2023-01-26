@@ -52,7 +52,7 @@ create table langues(
     idlangue NUMBER primary key,
     nom VARCHAR2(20),
     niveau VARCHAR2(20),
-    idcandidat NUMBER References candidats(idcandidat) on delete cascade
+    getItem('uuid_candidat') NUMBER References candidats(getItem('uuid_candidat')) on delete cascade
 );
 
 
@@ -72,7 +72,7 @@ create table offre(
 
 create table POSTULER(
     IDOFFRE NUMBER references offre(idoffre) on delete cascade,
-    IDCANDIDAT NUMBER references candidats(idcandidat) on delete cascade,
+    IDCANDIDAT NUMBER references candidats(getItem('uuid_candidat')uid_candidat')) on delete cascade,
     DATEPOSTULER DATE,
     constraint pk_postuler primary key(idoffre,idcandidat)
 );
@@ -210,3 +210,37 @@ CREATE SEQUENCE seq_specialite_id
 CREATE SEQUENCE seq_offre_id
  START WITH     1
  INCREMENT BY   1;
+
+
+
+
+
+candidat cv 
+2 choix ==>
+	1 - importer pdf mn 3ando
+
+	2 - entrer ces informations f site pour générer un cv 
+
+en tous cas pdf sera convertir to blob et étre inserer au database
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

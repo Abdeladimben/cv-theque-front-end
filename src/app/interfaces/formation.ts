@@ -1,10 +1,11 @@
 export interface Formation {
 
-    IDFORMATION: any;
-    DIPLOME: string;
-    INSTITUT: string;
-    ANNEESCOLAIRE: string;
-    MENTION: string;
-    IDCANDIDAT: any;
+    uuid: any;
+    diplome: string;
+    institut: string;
+    mention: string;
+    dateDebut:any;
+    dateFin:any;
+    niveau:string;
 
 }

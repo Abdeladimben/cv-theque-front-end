@@ -10,3 +10,8 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+
+  const type=localStorage.getItem('type');
+  console.group("main");
+  console.log(type);
+  console.groupEnd();

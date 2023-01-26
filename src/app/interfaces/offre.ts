@@ -1,14 +1,14 @@
 export interface Offre {
-    IDOFFRE: number,
-    TYPE:string,
-    POSTE:string,
-    DESCRIPTION:string,
-    COMPETENCES:string,
-    LIEU:string,
-    DATEOFFRE:Date,
-    SALAIRE:string,
-    CONTRAT:string,
-    DUREECONTRAT:string,
-    NBRCANDIDAT:number
+    uuid: string,
+    type:string,
+    poste:string,
+    description:string,
+    competences:string,
+    lieu:string,
+    dateOffre:Date,
+    salaire:string,
+    contrat:string,
+    dureeContrat:string,
+    nombreCandidat:number
     
 }

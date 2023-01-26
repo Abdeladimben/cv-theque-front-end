@@ -1,9 +1,0 @@
-<div class="container">
-    <div class="Title">CVTHÉQUE</div>
-    <div class="account" *ngIf="userType!=undefined">
-        <button mat-icon-button [matMenuTriggerFor]="menu"> <mat-icon>account_circle</mat-icon> </button>
-            <mat-menu #menu="matMenu">
-                <button (click)="logout()" mat-menu-item>Déconnection</button>
-            </mat-menu>
-    </div>
-</div>

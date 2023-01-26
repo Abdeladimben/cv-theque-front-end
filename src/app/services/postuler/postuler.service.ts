@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Ipostuler } from 'src/app/interfaces/ipostuler';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class PostulerService {
 
-  apiURL: string = 'http://localhost:3000/postuler'
+  apiURL: string=environment.url+"/postuler";
 
-  constructor(private http:HttpClient) { }
-  
-  Postuler(PostulerP:Ipostuler){ 
+  constructor(private http:HttpClient) {
+  }
+
+  Postuler(uuid_offre:string){ 
     return new Promise((resolve, reject) => 
       {
-        this.http.post<Ipostuler>(this.apiURL,PostulerP)
+        this.http.post<Ipostuler>(this.apiURL+"/create/"+uuid_offre,null)
         .subscribe
         (
           res =>{
@@ -26,10 +28,10 @@ export class PostulerService {
     )
   }
 
-  getNumbreOfPostulations(){
+  getCandidatPostulerByOffre(uuidOffre:string){
     return new Promise((resolve,reject) =>
       {
-        this.http.get(this.apiURL+"/count/0")
+        this.http.get(this.apiURL+"/get/offre/"+uuidOffre)
         .subscribe(
           res=>{
             resolve(res);
@@ -42,10 +44,10 @@ export class PostulerService {
     )
   }
 
-  getPostulationsByCandidat(IDCANDIDAT:string){
+  count(){
     return new Promise((resolve,reject) =>
       {
-        this.http.get(this.apiURL+"/IDCANDIDAT/"+IDCANDIDAT)
+        this.http.get(this.apiURL+"/count")
         .subscribe(
           res=>{
             resolve(res);
@@ -58,10 +60,12 @@ export class PostulerService {
     )
   }
 
-  getCandidatPostulerByOffre(IDOffre:string){
+
+
+  getPostulationsByCandidat(uuid:string){
     return new Promise((resolve,reject) =>
       {
-        this.http.get(this.apiURL+"/IDOFFRE/"+IDOffre)
+        this.http.get(this.apiURL+"/get/candidat/"+uuid)
         .subscribe(
           res=>{
             resolve(res);
@@ -73,6 +77,7 @@ export class PostulerService {
       }
     )
   }
+
 
 
 

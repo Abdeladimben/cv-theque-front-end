@@ -9,21 +9,12 @@ import { NavigationEnd, Event, Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'cvtheque';
   type:any=localStorage.getItem('type');
-
+  SideBarOpen=true;
   currentRoute: string;
 
   constructor(private router: Router) {
     
     this.currentRoute = "";
-    /*this.router.events.subscribe((event: Event) => {
-        if (event instanceof NavigationEnd) {
-          this.type=localStorage.getItem('type');
-            // Hide progress spinner or progress bar
-            this.currentRoute = event.urlAfterRedirects;          
-            console.log(event);
-            console.log(this.currentRoute);
-        }
-    });*/
     this.type=localStorage.getItem('type');
 }
   ngOnInit(): void {
@@ -34,6 +25,10 @@ export class AppComponent implements OnInit {
     console.log('change route');
     this.type=localStorage.getItem('type');
 
+  }
+
+  sideBarToggler() {
+    this.SideBarOpen= !this.SideBarOpen;
   }
 
 

@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="form-container">
+        <div class="title">Information</div>
+        <form [formGroup]="candidatForm">
+            <div class="flex-form">
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Enter ton nom</mat-label>
+                        <input  matInput formControlName="name">
+                        <app-error-form [control]="candidatForm.controls['name']"></app-error-form>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Enter ton prenom</mat-label>
+                        <input  matInput formControlName="prenom">
+                        <app-error-form [control]="candidatForm.controls['prenom']"></app-error-form>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Enter ton téléphone</mat-label>
+                        <input  matInput formControlName="telephone">
+                        <app-error-form [control]="candidatForm.controls['telephone']"></app-error-form>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Enter ton intitule</mat-label>
+                        <input  matInput formControlName="intitule">
+                        <app-error-form [control]="candidatForm.controls['intitule']"></app-error-form>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="date" appearance="fill">
+                        <mat-label>Choisir votre date de naissance</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="datenaissance">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <app-error-form [control]="candidatForm.controls['datenaissance']"></app-error-form>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Enter ton ville</mat-label>
+                        <input  matInput formControlName="lieunaissance">
+                        <app-error-form [control]="candidatForm.controls['lieunaissance']"></app-error-form>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Enter ton adresse</mat-label>
+                        <input  matInput formControlName="adresse">
+                        <app-error-form [control]="candidatForm.controls['adresse']"></app-error-form>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>description</mat-label>
+                        <textarea  matInput formControlName="description"></textarea>
+                    </mat-form-field>
+    
+                </div>
+            </div>
+        </form>
+        <div class="button-container">
+            <button [disabled]="candidatForm.invalid" (click)="next()" mat-raised-button class="login-button">NEXT</button>
+        </div>
+
+    </div>
+</div>
+

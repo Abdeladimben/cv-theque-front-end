@@ -9,7 +9,7 @@ oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-
+const { check, validationResult } = require('express-validator');
 let connection;
 let id;
 
@@ -472,7 +472,7 @@ app.get('/postuler/count/0', async function (req, res) {
 
 
 ///////////////
-///////////////       GET DATA WITH utilisateur
+///////////////       GET DATA WITH USER
 ///////////////
 
 
@@ -640,7 +640,7 @@ app.get('/candidats/IDCANDIDAT/:idcandidat&date/any', async function (req, res) 
 async function insertdata(table, pid, p2, p3, p4, p5, p6, p7, p8, p9) {
 
 	if (table == "account") {
-		connection.execute("insert into account values(:email,:password,'utilisateur')", {
+		connection.execute("insert into account values(:email,:password,'USER')", {
 			email: pid,
 			password: p2
 		}, {
@@ -732,15 +732,32 @@ async function insertdata(table, pid, p2, p3, p4, p5, p6, p7, p8, p9) {
 
 }
 
+var loginValidate = [
+		// Check Username
+		check('EMAIL', 'Username Must Be an Email Address').isEmail()
+		.trim().escape().normalizeEmail(),
+		// Check Password
+		check('PASSWORD').isLength({ min: 6 }).
+		withMessage('Password Must Be at Least 6 Characters').
+		trim().escape()
+	];
 
-app.post('/account', async function (req, res) {
-	let EMAIL = req.body.EMAIL;
-	let PASSWORD = bcrypt.hashSync(req.body.PASSWORD, salt);
-	insertdata('account', EMAIL, PASSWORD, null, null, null, null, null, null, null);
-	res.send({
-		message: "account data inserted"
-	})
-	console.log("account data inserted")
+app.post('/account/create',loginValidate, async (req, res)=> {
+	
+	const errors = validationResult(req);
+	if (!errors.isEmpty()) {
+		return res.status(422).json({ errors: errors.array() });
+	}
+	else {
+		let EMAIL = req.body.EMAIL;
+		let PASSWORD = bcrypt.hashSync(req.body.PASSWORD, salt);
+		insertdata('account', EMAIL, PASSWORD, null, null, null, null, null, null, null);
+		res.send({
+			message: "account data inserted"
+		})
+		console.log("account data inserted")
+	}
+	
 })
 
 

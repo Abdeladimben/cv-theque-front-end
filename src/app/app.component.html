@@ -1,12 +1,2 @@
-<app-top-bar></app-top-bar>
 
-<div [class]="type=='utilisateur' || type==undefined || type==null?' ':'container'"   >
-    <app-navbar *ngIf="type=='admin'"></app-navbar>
-    <router-outlet (activate)="changeOfRoutes()"></router-outlet>
-</div>
-
-
-<!-- <router-outlet (activate)="changeOfRoutes()" *ngIf="type!=='admin'"></router-outlet> -->
-
-
-
+<router-outlet></router-outlet>
