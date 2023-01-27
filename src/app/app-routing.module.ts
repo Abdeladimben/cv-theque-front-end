@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateaccountComponent } from './components/account/createaccount/createaccount.component';
-import { LoginComponent } from './components/account/login/login.component';
-import { DashbordComponent } from './components/admin_pages/admin_default/dashbord/dashbord.component';
-import { CandidatComponent } from './components/admin_pages/admin_default/candidat/candidat.component';
-import { OffresComponent } from './components/admin_pages/admin_default/offres/offres.component';
-import { PublierComponent } from './components/admin_pages/admin_default/publier/publier.component';
-import { UtilisateurOffresComponent } from './components/default-user/utilisateur-offres/utilisateur-offres.component';
-import { CandidatInformationComponent } from './components/default-user/candidat-information/candidat-information.component';
-import { HomeComponent } from './components/account/home/home.component';
-import { ProfilComponent } from './components/default-user/profil/profil.component';
-import { AuthGuard } from './helper/auth.guard';
-import { DefaultComponent } from './components/admin_pages/admin_default/default.component';
-import { DefaultUserComponent } from './components/default-user/default-user.component';
-import { DefaultHomeComponent } from './components/account/default-home/default-home.component';
-import { SpinnertestComponent } from './spinnertest/spinnertest.component';
+import { CreateaccountComponent } from './features/account/createaccount/createaccount.component';
+
+import { AuthGuard } from './core/services/auth.guard';
+import { HomeComponent } from './features/account/home/home.component';
+import { LoginComponent } from './features/account/login/login.component';
+import { CandidatComponent } from './features/administrateur/candidat/candidat.component';
+import { DashbordComponent } from './features/administrateur/dashbord/dashbord.component';
+import { OffresComponent } from './features/administrateur/offres/offres.component';
+import { PublierComponent } from './features/administrateur/publier/publier.component';
+import { DefaultComponent } from './features/default/default-administrateur/default.component';
+import { DefaultHomeComponent } from './features/default/default-home/default-home.component';
+import { DefaultUserComponent } from './features/default/default-user/default-user.component';
+import { CandidatInformationComponent } from './features/utilisateur/candidat-information/candidat-information.component';
+import { ProfilComponent } from './features/utilisateur/profil/profil.component';
+import { UtilisateurOffresComponent } from './features/utilisateur/utilisateur-offres/utilisateur-offres.component';
+
 
   const routes: Routes = [
     {path:'', redirectTo: 'home',pathMatch:"full"},
-    {path:'spinner', component:SpinnertestComponent},
     {path:'home',component:DefaultHomeComponent,
       children:[
         {path:'',component:HomeComponent},

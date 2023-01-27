@@ -4,12 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-
 import { MatSidenavModule } from '@angular/material/sidenav'
 
-import { ServiceModule } from './modules/service/service.module';
-import { UserModule } from './modules/component/userModule/user.module';
-import { AdminModule } from './modules/component/adminModule/admin.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,15 +25,29 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LayotModule } from './modules/component/layoutModule/layot.module';
 import { MatStepperModule } from '@angular/material/stepper';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { CoreModule } from './core/core.module';
+import { CreateAccountModule } from './features/account/createaccount/create-account.module';
+import { HomeModule } from './features/account/home/home.module';
+import { LoginModule } from './features/account/login/login.module';
+import { CandidatModule } from './features/administrateur/candidat/candidat.module';
+import { DashbordModule } from './features/administrateur/dashbord/dashbord.module';
+import { OffresModule } from './features/administrateur/offres/offre.module';
+import { PublierModule } from './features/administrateur/publier/publier.module';
+import { DefaultAdministrateurModule } from './features/default/default-administrateur/default-administrateur.module';
+import { DefaultHomeModule } from './features/default/default-home/default-home.module';
+import { DefaultUserModule } from './features/default/default-user/default-user.module';
+import { CandidatInformationModule } from './features/utilisateur/candidat-information/candidat-information.module';
+import { ProfilModule } from './features/utilisateur/profil/profil.module';
+import { UtilisateurOffresModule } from './features/utilisateur/utilisateur-offres/utilisateur-offres.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-
+    AppComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -66,10 +76,21 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatDialogModule,
     MatStepperModule,
     MatProgressSpinnerModule,
-    ServiceModule,
-    AdminModule,
-    UserModule,
-    LayotModule,
+    CoreModule,
+    CreateAccountModule,
+    HomeModule,
+    LoginModule,
+    CandidatModule,
+    DashbordModule,
+    OffresModule,
+    PublierModule,
+    DefaultAdministrateurModule,
+    DefaultHomeModule,
+    DefaultUserModule,
+    CandidatInformationModule,
+    ProfilModule,
+    UtilisateurOffresModule,
+    SharedModule
     
   ],
   providers: [],
