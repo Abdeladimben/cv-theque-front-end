@@ -170,11 +170,31 @@ export class ProfilComponent implements OnInit, OnChanges {
   });
 
   @Input('candidat') uuid_candidat: any;
-  showIcon: boolean = true;
+  showIcon: boolean = false;
 
   ngOnChanges() {
     console.log(this.uuid_candidat);
+
     if (this.uuid_candidat != null) {
+      this.myCandidat={
+        uuid: '',
+        nom: '',
+        prenom: '',
+        dateNaissance: '',
+        lieuNaissance: '',
+        nationalite: '',
+        adresse: '',
+        email: '',
+        telephone: '',
+        description: '',
+    
+        centreInterets: [],
+        experiences: [],
+        formations: [],
+        langues: [],
+        specialites: [],
+        intitule: ''
+      };
       this.candidatService.getCandidat(this.uuid_candidat).then((res: any) => {
         this.showIcon = false;
         this.myCandidat = res;
