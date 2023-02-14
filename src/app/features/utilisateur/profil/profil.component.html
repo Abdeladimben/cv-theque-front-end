@@ -4,269 +4,6 @@
 
 
 <div class="parent">
-<!--     <div class="container">
-        <div class="form-container">
-            <div class="form">
-                <div class="title">
-                    <h1>Information Personnelle</h1>
-                    <button *ngIf="showIcon" class="add" type="button" (click)="openDialog(informationPersonnelle,null,'update','informationPersonnelle')">
-                        <mat-icon>update</mat-icon>
-                    </button>
-                </div>
-                <div class="twoColumns">
-                    <div class="flex">
-                        <div class="flex-child">
-                            <div class="field">
-                                <label for="nom">Nom</label>
-                                <input disabled type="text" id="nom" name="nom" [(ngModel)]="myCandidat.nom" />
-                            </div>
-                            <div class="field">
-                                <label for="prenom">prenom</label>
-                                <input disabled type="text" id="prenom" name="prenom" [(ngModel)]="myCandidat.prenom" />
-                            </div>
-                            <div class="field">
-                                <label for="telephone">telephone</label>
-                                <input disabled type="text" id="telephone" name="telephone"
-                                    [(ngModel)]="myCandidat.telephone" />
-                            </div>
-                            <div class="field">
-                                <label for="email">email</label>
-                                <input disabled type="text" id="email" name="email" [(ngModel)]="myCandidat.email" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex">
-                        <div class="flex-child">
-                            <div class="field">
-                                <label for="datenaissance">datenaissance</label>
-                                <input disabled type="date" id="datenaissance" name="datenaissance"
-                                    [(ngModel)]="myCandidat.dateNaissance" />
-                            </div>
-                            <div class="field">
-                                <label for="lieunaissance">lieunaissance</label>
-                                <input disabled type="text" id="lieunaissance" name="lieunaissance"
-                                    [(ngModel)]="myCandidat.lieuNaissance" />
-                            </div>
-                            <div class="field">
-                                <label for="nationalite">nationalite</label>
-                                <input disabled type="text" id="nationalite" name="nationalite"
-                                    [(ngModel)]="myCandidat.nationalite" />
-                            </div>
-                            <div class="field">
-                                <label for="adresse">adresse</label>
-                                <input disabled type="text" id="adresse" name="adresse"
-                                    [(ngModel)]="myCandidat.adresse" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex" *ngIf="myCandidat.description">
-                        <div class="flex-child" >
-                            <div class="field">
-                                <label for="nom">Description</label>
-                                <textarea disabled type="text" id="description" name="description" rows="13" cols="40" [(ngModel)]="myCandidat.description" ></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form">
-                <div class="title">
-                    <h1>Formation</h1>
-                    <button *ngIf="showIcon" class="add" type="button" (click)="openDialog(formation,null,null)">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                </div>
-                <div class="margin">
-                    <div class="info" *ngFor="let form of myCandidat.formations; let i= index">
-                        <div class="flex">
-                            <div class="controle-card">
-                                <button *ngIf="showIcon" class="update" type="button" (click)="openDialog(formation,form,'update','formation',i)">
-                                    <mat-icon>update</mat-icon>
-                                </button>
-                                <button *ngIf="showIcon" class="delete" type="button" (click)="delete('formation',form.uuid)">
-                                    <mat-icon>delete</mat-icon>
-                                </button>
-                            </div>
-                            <div class="flex-child">
-                                <div class="field">
-                                    <label for="diplome">diplome</label>
-                                    <input disabled type="text" id="diplome" name="diplome"
-                                        [(ngModel)]="form.diplome" />
-                                </div>
-                                <div class="field">
-                                    <label for="institut">institut</label>
-                                    <input disabled type="text" id="institut" name="institut"
-                                        [(ngModel)]="form.institut" />
-                                </div>
-                                <div class="field">
-                                    <label for="dateDebut">date Debut</label>
-                                    <input disabled type="date" id="dateDebut" name="dateDebut"
-                                        [(ngModel)]="form.dateDebut" />
-                                </div>
-                                <div class="field">
-                                    <label for="dateFin">date Fin</label>
-                                    <input disabled type="date" id="dateFin" name="dateFin"
-                                        [(ngModel)]="form.dateFin" />
-                                </div>
-                                <div class="field">
-                                    <label for="niveau">niveau</label>
-                                    <input disabled type="text" id="niveau" name="niveau"
-                                        [(ngModel)]="form.niveau" />
-                                </div>
-                                <div class="field">
-                                    <label for="mention">mention</label>
-                                    <input disabled type="text" id="mention" name="mention"
-                                        [(ngModel)]="form.mention" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="form">
-                <div class="title">
-                    <h1>Expérience</h1>
-                    <button *ngIf="showIcon" class="add" type="button" (click)="openDialog(experience,null,null)">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                </div>
-                <div class="margin">
-                    <div class="info" *ngFor="let exp of myCandidat.experiences; let i= index">
-                        <div class="flex">
-                            <div class="controle-card">
-                                <button *ngIf="showIcon" class="update" type="button" (click)="openDialog(experience,exp,'update','experience',i)">
-                                    <mat-icon>update</mat-icon>
-                                </button>
-                                <button *ngIf="showIcon" class="delete" type="button" (click)="delete('experience',exp.uuid)">
-                                    <mat-icon>delete</mat-icon>
-                                </button>
-                            </div>
-                            <div class="flex-child">
-                                <div class="field">
-                                    <label for="role">role</label>
-                                    <input disabled type="text" id="role" name="role" [(ngModel)]="exp.role" />
-                                </div>
-                                <div class="field">
-                                    <label for="dateDebut">date debut</label>
-                                    <input disabled type="date" id="dateDebut" name="dateDebut"
-                                        [(ngModel)]="exp.dateDebut" />
-                                </div>
-                                <div class="field">
-                                    <label for="dateFin">date fin</label>
-                                    <input disabled type="date" id="dateFin" name="dateFin" [(ngModel)]="exp.dateFin" />
-                                </div>
-                                <div class="field">
-                                    <label for="entreprise">entreprise</label>
-                                    <input disabled type="text" id="entreprise" name="entreprise"
-                                        [(ngModel)]="exp.entreprise" />
-                                </div>
-                                <div class="field">
-                                    <label for="exp_description">description</label>
-                                    <input disabled type="text" id="exp_description" name="exp_description"
-                                        [(ngModel)]="exp.description" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="form">
-                <div class="title">
-                    <h1>Compétences</h1>
-                    <button *ngIf="showIcon" class="add" type="button" (click)="openDialog(competence)">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                </div>
-                <div class="margin">
-                    <div *ngFor="let spec of myCandidat.specialites; let i= index">
-                        <div class="flex">
-                            <div class="controle-card">
-                                <button *ngIf="showIcon" class="update" type="button" (click)="openDialog(competence,spec,'update','specialite',i)">
-                                    <mat-icon>update</mat-icon>
-                                </button>
-                                <button *ngIf="showIcon" class="delete" type="button" (click)="delete('specialite',spec.uuid)">
-                                    <mat-icon>delete</mat-icon>
-                                </button>
-                            </div>
-                            <div class="flex-child">
-                                <input disabled type="text" id="specialite" name="specialite"
-                                    [(ngModel)]="spec.intitule" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form">
-                <div class="title">
-                    <h1>Langue</h1>
-                    <button *ngIf="showIcon" class="add" type="button" (click)="openDialog(langue)">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                </div>
-                <div class="margin">
-                    <div *ngFor="let lang of myCandidat.langues;let i= index">
-                        <div class="flex">
-                            <div class="controle-card">
-                                <button *ngIf="showIcon" class="update" type="button" (click)="openDialog(langue,lang,'update','langue',i)">
-                                    <mat-icon>update</mat-icon>
-                                </button>
-                                <button *ngIf="showIcon" class="delete" type="button" (click)="delete('langue',lang.uuid)">
-                                    <mat-icon>delete</mat-icon>
-                                </button>
-                            </div>
-                            <div class="flex-child">
-                                <div class="field">
-                                    <label for="nom">Langue</label>
-                                    <input disabled type="text" id="nom" name="nom" [(ngModel)]="lang.nom" />
-                                </div>
-                                <div class="field">
-                                    <label for="niveau">niveau</label>
-                                    <input disabled type="text" id="niveau" name="niveau"
-                                        [(ngModel)]="lang.niveau" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form">
-                <div class="title">
-                    <h1>Centre interet</h1>
-                    <button *ngIf="showIcon" class="add" type="button" (click)="openDialog(centreInteret)">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                </div>
-                <div class="margin">
-                    <div *ngFor="let centre of myCandidat.centreInterets; let i= index">
-                        <div class="flex">
-                            <div class="controle-card">
-                                <button *ngIf="showIcon" class="update" type="button" (click)="openDialog(centreInteret,centre,'update','centre',i)">
-                                    <mat-icon>update</mat-icon>
-                                </button>
-                                <button *ngIf="showIcon" class="delete" type="button" (click)="delete('centre',centre.uuid)">
-                                    <mat-icon>delete</mat-icon>
-                                </button>
-                            </div>
-                            <div class="flex-child">
-                                <input disabled type="text" id="centreinteret " name="centreinteret"
-                                    [(ngModel)]="centre.intitule" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div> -->
-
     <div class="container">
         <div class="container-padding">
             <div *ngIf="showIcon" class="menu">
@@ -279,24 +16,24 @@
             
             <section class="information">
                 <header class="title">
-                    <h1 class="name">{{myCandidat.nom.toUpperCase() +" "+ myCandidat.prenom.toUpperCase()}}</h1>
+                    <h1 class="name">{{myCandidat.nom?.toUpperCase() +" "+ myCandidat.prenom?.toUpperCase()}}</h1>
                     <button mat-icon-button *ngIf="showIcon" type="button" (click)="openDialog(informationPersonnelle,null,'update','informationPersonnelle',null)">
                         <i class='bx bx-edit-alt'></i>
                     </button>
                 </header>
                 <div class="info">
                     <div class="intitule">
-                        <h2>{{myCandidat.intitule.toUpperCase()}}</h2>
+                        <h2>{{myCandidat.intitule?.toUpperCase()}}</h2>
                     </div>
                     
-                    <p class="label">{{myCandidat.adresse.toUpperCase()}}</p>
+                    <p class="label">{{myCandidat.adresse?.toUpperCase()}}</p>
                     <p class="label">{{myCandidat.email}}</p>
                     <p class="label">{{myCandidat.telephone}}</p>
                     <p class="label">{{myCandidat.dateNaissance}}</p>
                 </div>
                 <div class="propos">
                     <h3>Á propos</h3>
-                    <p>{{myCandidat.description}}</p>
+                    <p>{{myCandidat.propos}}</p>
                 </div>
             </section>
             <section class="part">
@@ -320,7 +57,7 @@
                     </div>
                     <p class="label">{{exp.entreprise}}</p>
                     <p class="label">{{exp.dateDebut + " á "+ exp.dateFin}}</p>
-                    <p class="label description">{{exp.description}}</p>
+                    <p class="label description">{{exp.description_experience}}</p>
                 </div>
             </section>
             <section class="part">

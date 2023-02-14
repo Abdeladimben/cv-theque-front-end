@@ -5,6 +5,6 @@ export interface Experience {
     dateDebut:any;
     dateFin:any;
     entreprise:string;
-    description:string;
+    description_experience:string;
 
 }

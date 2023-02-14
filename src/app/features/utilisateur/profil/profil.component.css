@@ -112,8 +112,8 @@ h2{
 
 
 .container{
-    min-width: 800px;
-    margin: 10px 25rem;
+    max-width: 800px;
+    margin: 10px auto;
 
 }
 .container-padding{
@@ -161,6 +161,7 @@ i{
 }
 
 .label{
+    word-wrap: break-word;
     margin:0 0 8px;
 }
 .experience .loop .description{

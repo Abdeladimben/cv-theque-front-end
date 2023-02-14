@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Offre } from 'src/app/core/models/offre';
 import { OffreService } from 'src/app/core/services/offre.service';
 
@@ -22,7 +23,7 @@ export class PublierComponent implements OnInit {
   ];
 
 
-  constructor(private fb: FormBuilder,private offreService:OffreService) { }
+  constructor(private fb: FormBuilder,private offreService:OffreService ,private snackBar:MatSnackBar) { }
 
 
   experienceForm=this.fb.group({
@@ -46,7 +47,7 @@ export class PublierComponent implements OnInit {
       uuid: '',
       type: this.experienceForm.value.type,
       poste: this.experienceForm.value.poste,
-      description: this.experienceForm.value.description,
+      description_offre: this.experienceForm.value.description,
       competences: this.experienceForm.value.competence,
       lieu: this.experienceForm.value.lieu,
       salaire: this.experienceForm.value.salaire,
@@ -59,9 +60,7 @@ export class PublierComponent implements OnInit {
     this.offreService.createNewOffre(myOffre)
       .then(
         (res:any)=>{
-          console.log(res);
-          console.log("succées");
-          console.log({...this.experienceForm});
+          this.snackBar.open("Offre publiée avec succées","oK")
         }
       ).catch(
         (err:any)=>{

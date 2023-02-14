@@ -80,7 +80,7 @@ export class CandidatComponent implements OnInit {
     nationalite: '',
     adresse: '',
     telephone: '',
-    description: '',
+    propos: '',
 
     centreInterets: [],
     experiences: [],
@@ -106,7 +106,7 @@ export class CandidatComponent implements OnInit {
     dateDebut:new Date(),
     dateFin:new Date(),
     entreprise:'',
-    description:''
+    description_experience:''
   }
 
   mySpecialite:Specialite={

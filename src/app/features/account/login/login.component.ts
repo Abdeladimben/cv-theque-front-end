@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     adresse: '',
     email: '',
     telephone: '',
-    description: '',
+    propos: '',
 
     centreInterets: [],
     experiences: [],

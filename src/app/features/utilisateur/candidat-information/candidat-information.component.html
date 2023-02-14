@@ -26,7 +26,7 @@
                     </mat-form-field>
                 </div>
                 <div>
-                    <mat-form-field class="date" appearance="fill">
+                    <mat-form-field class="date" appearance="outline">
                         <mat-label>Choisir votre date de naissance</mat-label>
                         <input matInput [matDatepicker]="picker" formControlName="datenaissance">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -45,7 +45,7 @@
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>description</mat-label>
-                        <textarea  matInput formControlName="description"></textarea>
+                        <textarea matInput formControlName="description"></textarea>
                     </mat-form-field>
     
                 </div>

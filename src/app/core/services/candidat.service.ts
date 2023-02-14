@@ -19,7 +19,7 @@ export class CandidatService {
     adresse: '',
     email: '',
     telephone: '',
-    description: '',
+    propos: '',
 
     centreInterets: [],
     experiences: [],
@@ -38,7 +38,7 @@ export class CandidatService {
   createNewCandidat(candidatP:Candidat){
     return new Promise((resolve, reject) =>
       {
-        this.http.post<Candidat>(this.apiURL+"/create",candidatP)
+        this.http.post<Candidat>(this.apiURL,candidatP)
         .subscribe
         (
           res =>{

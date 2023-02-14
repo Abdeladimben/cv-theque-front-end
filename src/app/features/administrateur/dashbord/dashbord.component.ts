@@ -40,7 +40,7 @@ export class DashbordComponent implements OnInit {
     nationalite: '',
     adresse: '',
     telephone: '',
-    description: '',
+    propos: '',
 
     centreInterets: [],
     experiences: [],
@@ -85,7 +85,7 @@ export class DashbordComponent implements OnInit {
       this.CANDIDATS=this.resultCandidat=res;
       this.dataSource=new MatTableDataSource<Candidat>(this.CANDIDATS);
       this.dataSource.paginator = this.paginator;
-      console.log(this.CANDIDATS);
+      console.log(res);
       return this.CANDIDATS;
     }).catch((err:any)=>{
       console.log(err);

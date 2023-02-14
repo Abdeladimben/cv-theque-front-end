@@ -32,7 +32,7 @@ export class ProfilComponent implements OnInit, OnChanges {
     adresse: '',
     email: '',
     telephone: '',
-    description: '',
+    propos: '',
 
     centreInterets: [],
     experiences: [],
@@ -52,7 +52,7 @@ export class ProfilComponent implements OnInit, OnChanges {
     adresse: '',
     telephone: '',
     email: '',
-    description: '',
+    propos: '',
 
     centreInterets: [],
     experiences: [],
@@ -78,7 +78,7 @@ export class ProfilComponent implements OnInit, OnChanges {
     dateDebut: new Date(),
     dateFin: new Date(),
     entreprise: '',
-    description: '',
+    description_experience: '',
   };
 
   mySpecialite: Specialite = {
@@ -186,7 +186,7 @@ export class ProfilComponent implements OnInit, OnChanges {
         adresse: '',
         email: '',
         telephone: '',
-        description: '',
+        propos: '',
     
         centreInterets: [],
         experiences: [],
@@ -213,6 +213,7 @@ export class ProfilComponent implements OnInit, OnChanges {
       this.candidatService
         .getCandidatByAccountToken()
         .then((res: any) => {
+          console.log(res);
           this.myCandidat = this.finalCandidat = res;
           this.showIcon = true;
           this.checkEnregistrer = false;
@@ -239,7 +240,7 @@ export class ProfilComponent implements OnInit, OnChanges {
         this.myCandidat.nationalite =
           this.informationPersonnelleForm.value.nationalite;
         this.myCandidat.adresse = this.informationPersonnelleForm.value.adresse;
-        this.myCandidat.description =
+        this.myCandidat.propos =
           this.informationPersonnelleForm.value.description;
         break;
       case 'formation':
@@ -264,7 +265,7 @@ export class ProfilComponent implements OnInit, OnChanges {
           dateDebut: this.experienceForm.value.dateDebut,
           dateFin: this.experienceForm.value.dateFin,
           entreprise: this.experienceForm.value.entreprise,
-          description: this.experienceForm.value.description,
+          description_experience: this.experienceForm.value.description,
         };
         this.myCandidat.experiences[this.indexForUpdate] = this.myExperience;
         break;
@@ -416,7 +417,7 @@ export class ProfilComponent implements OnInit, OnChanges {
           dateDebut:this.datePipe.transform( this.experienceForm.value.dateDebut,"yyyy-MM-dd")?.toString(),
           dateFin:this.datePipe.transform(this.experienceForm.value.dateFin,"yyyy-MM-dd")?.toString() ,
           entreprise: this.experienceForm.value.entreprise,
-          description: this.experienceForm.value.description,
+          description_experience: this.experienceForm.value.description,
         };
         if (this.myCandidat.experiences == undefined) {
           this.myCandidat.experiences = [this.myExperience];
@@ -540,7 +541,7 @@ export class ProfilComponent implements OnInit, OnChanges {
         lieuNaissance: this.myCandidat.lieuNaissance,
         nationalite: this.myCandidat.nationalite,
         adresse: this.myCandidat.adresse,
-        description: this.myCandidat.description,
+        description: this.myCandidat.propos,
       });
     }
   }

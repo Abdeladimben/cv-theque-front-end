@@ -25,7 +25,7 @@ export class CandidatInformationComponent implements OnInit {
     adresse: '',
     email: '',
     telephone: '',
-    description: '',
+    propos: '',
 
     centreInterets: [],
     experiences: [],
@@ -55,21 +55,6 @@ export class CandidatInformationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('start');
-    this.candidatService.getCandidatByAccountToken().then((res:any)=>{
-      console.log('res');
-      console.log(res);
-      if(res==null || res==undefined){
-        this.exist=false;
-      }else{
-        this.exist=true;
-        this.myCandidat=res;
-        console.log(this.myCandidat);
-      }
-    }).catch((err)=>{
-      console.log(err);
-    })
-
   }
 
 
@@ -86,7 +71,7 @@ export class CandidatInformationComponent implements OnInit {
         nationalite:'maroc',
         adresse:this.candidatForm.value.adresse,
         telephone:this.candidatForm.value.telephone,
-        description:this.candidatForm.value.description,
+        propos:this.candidatForm.value.description,
         
         centreInterets:[],
         experiences:[],
@@ -96,15 +81,7 @@ export class CandidatInformationComponent implements OnInit {
       }
       this.candidatService.createNewCandidat(this.myCandidat).then((res:any)=>{
         console.log(res);
-        this.candidatService.getCandidatByAccountToken().then((resultat:any)=>{
-          console.log("getCandidatByAccountToken");
-          console.log(resultat);
-          this.candidatService.myCandidat=resultat;
-          this.candidatService.myCandidat.uuid=resultat.uuid;
           this.router.navigate(['/user/profil']);
-        }).catch((error)=>{
-          console.log(error);
-        })
       }).catch((err)=>{
         console.log(err);
       })

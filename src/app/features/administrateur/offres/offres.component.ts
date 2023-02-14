@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Offre } from 'src/app/core/models/offre';
 import { OffreService } from 'src/app/core/services/offre.service';
@@ -18,7 +19,7 @@ export class OffresComponent implements OnInit {
   postulations:Array<any>=[];
   nombreCandidat:number=0;
   nombreOffre:number=0;
-  constructor(private offreService:OffreService,private postulerService:PostulerService,private router:Router) { }
+  constructor(private offreService:OffreService,private postulerService:PostulerService,private router:Router,private snackBar:MatSnackBar) { }
 
   ngOnInit(){
     localStorage.removeItem('uuidoffre_recherche');
@@ -46,6 +47,7 @@ export class OffresComponent implements OnInit {
         console.log(res);
         this.offres=this.offres.filter((offres:any) =>offres.uuid!==uuid);
         this.nombreOffre--;
+        this.snackBar.open("suppression avec succées","ok")
       }
     ).catch(
       (err:any) => {

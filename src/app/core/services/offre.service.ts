@@ -12,7 +12,7 @@ export class OffreService {
     uuid: '',
     type: '',
     poste: '',
-    description: '',
+    description_offre: '',
     competences: '',
     lieu: '',
     salaire: '',

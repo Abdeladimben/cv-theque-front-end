@@ -1,6 +1,5 @@
 <div class="container">
   <div class="margin-container">
-    <div *ngIf="offres?.length==0">aucune offre est publié</div>
     <div class="nbr">
       <mat-card>Total Offre : {{offres?.length}}</mat-card>
       <mat-card>Total Candidat : {{nombreCandidat}}</mat-card>
@@ -12,7 +11,7 @@
             <mat-card-subtitle>{{offre.lieu}} / {{offre.type}} / {{offre.dateOffre}}</mat-card-subtitle>
           </div>
           <mat-card-content>
-            <p class="description">{{offre.description}}</p>
+            <p class="description">{{offre.description_offre}}</p>
             <p><span>Compétence :</span> {{offre.competences?.toUpperCase()}}</p>
             <p><span>Contrat :</span> {{offre.contrat?.toUpperCase()}}</p>
             <p><span>Durée :</span> {{offre.dureeContrat?.toUpperCase()}}</p>

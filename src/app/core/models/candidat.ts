@@ -15,7 +15,7 @@ export interface Candidat {
     adresse:string;
     email?:any;
     telephone:string;
-    description:string;
+    propos:string;
     checkCV?:boolean;
     checkLettre?:boolean;
     centreInterets:CentreInteret[];
